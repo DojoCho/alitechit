@@ -285,34 +285,30 @@
             <p>Please enter your location and describe the work you need.</p>
 
             <div class="card">
-                <form action="https://formsubmit.co/aekremsan@gmail.com" method="POST">
-
-                    <input type="hidden" name="_captcha" value="true">
-                    <input type="hidden" name="_subject" value="New Service Request from AliTechIT Website">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://alitechit.com/thankyou.html">
-
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="3c818fd8-d8bf-41c9-a7c7-c2957101593c">
+                  
                     <label>Your Name</label>
                     <input type="text" name="name" required>
-
+                  
                     <label>Email</label>
                     <input type="email" name="email" required>
-
+                  
                     <label>Phone Number</label>
                     <input type="text" name="phone" required>
-
+                  
                     <label>Your Location (City & State)</label>
                     <input type="text" name="location" required>
-
+                  
                     <label>What do you need help with?</label>
-                    <textarea name="description" rows="5" required></textarea>
-
+                    <textarea name="message" required></textarea>
+                  
                     <button type="submit"
                         style="margin-top:15px;background:#22c55e;border:none;padding:12px 20px;color:white;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;">
                         Send Request
                     </button>
-
-                </form>
+                  </form>
+                
             </div>
         </section>
 
