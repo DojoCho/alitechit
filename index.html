@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -306,38 +305,38 @@
         <section id="contact">
             <h2>Request a Quote</h2>
             <p>Please enter your location and describe the work you need.</p>
-        
+
             <div class="card">
                 <form id="contactForm">
                     <input type="hidden" name="access_key" value="3c818fd8-d8bf-41c9-a7c7-c2957101593c">
-        
+
                     <label>Your Name</label>
                     <input type="text" name="name" required>
-        
+
                     <label>Email</label>
                     <input type="email" name="email" required>
-        
+
                     <label>Phone Number</label>
                     <input type="text" name="phone" required>
-        
+
                     <label>Your Location (City & State)</label>
                     <input type="text" name="location" required>
-        
+
                     <label>What do you need help with?</label>
                     <textarea name="message" rows="5" required></textarea>
-        
+
                     <button id="contactSubmit" type="submit"
                         style="margin-top:15px;background:#22c55e;border:none;padding:12px 20px;color:white;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;">
                         Send Request
                     </button>
-        
+
                     <!-- Kullanıcıya gösterilecek bilgi/hata mesajı -->
                     <div id="form-status" style="margin-top:10px;font-size:0.9rem;"></div>
-        
+
                 </form>
             </div>
         </section>
-        
+
 
     </main>
 
@@ -348,451 +347,52 @@
         const form = document.getElementById('contactForm');
         const statusBox = document.getElementById('form-status');
         const submitBtn = document.getElementById('contactSubmit');
-      
+
         if (form) {
-          form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-      
-            // Önce mesaj alanını temizle
-            statusBox.textContent = '';
-            statusBox.style.color = '#111827';
-      
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-      
-            try {
-              const formData = new FormData(form);
-      
-              const res = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-              });
-      
-              const data = await res.json();
-      
-              if (data.success) {
-                // Başarılı → teşekkür sayfasına yönlendir
-                window.location.href = 'thankyou.html';
-              } else {
-                // SPAM veya Web3Forms hatası
-                statusBox.style.color = '#b91c1c';
-                statusBox.textContent =
-                  'Your message was flagged as spam. Please add more detail and try again.';
-      
-                console.log('Web3Forms error:', data);
-              }
-            } catch (err) {
-              statusBox.style.color = '#b91c1c';
-              statusBox.textContent =
-                'Unexpected error occurred. Please try again later.';
-              console.error(err);
-            } finally {
-              submitBtn.disabled = false;
-              submitBtn.textContent = 'Send Request';
-            }
-          });
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                // Önce mesaj alanını temizle
+                statusBox.textContent = '';
+                statusBox.style.color = '#111827';
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                try {
+                    const formData = new FormData(form);
+
+                    const res = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const data = await res.json();
+
+                    if (data.success) {
+                        // Başarılı → teşekkür sayfasına yönlendir
+                        window.location.href = 'thankyou.html';
+                    } else {
+                        // SPAM veya Web3Forms hatası
+                        statusBox.style.color = '#b91c1c';
+                        statusBox.textContent =
+                            'Your message was flagged as spam. Please add more detail and try again.';
+
+                        console.log('Web3Forms error:', data);
+                    }
+                } catch (err) {
+                    statusBox.style.color = '#b91c1c';
+                    statusBox.textContent =
+                        'Unexpected error occurred. Please try again later.';
+                    console.error(err);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Request';
+                }
+            });
         }
-      </script>
-      
+    </script>
+
 </body>
 
-=======
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <title>AliTech IT Services | On-Site IT & Networking</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description"
-        content="On-site network infrastructure and IT field services across MA, RI, CT, and NH. Rack & stack, server and switch installation, decommissioning, cabling, WiFi deployments, and field support for data centers, offices, and retail chains." />
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            line-height: 1.5;
-            background: #f5f5f7;
-            color: #222;
-        }
-
-        header {
-            background: #101827;
-            color: #fff;
-            padding: 2.5rem 1.5rem;
-        }
-
-        header .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        header p {
-            max-width: 650px;
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        header .cta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.3rem;
-            border-radius: 999px;
-            font-size: 0.95rem;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid transparent;
-        }
-
-        .btn-primary {
-            background: #22c55e;
-            color: #04101f;
-            border-color: #16a34a;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: #e5e7eb;
-            border-color: #4b5563;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem 3.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #111827;
-        }
-
-        section p {
-            margin-bottom: 0.75rem;
-            color: #374151;
-        }
-
-        .grid {
-            display: grid;
-            gap: 1.25rem;
-        }
-
-        @media (min-width: 768px) {
-            .grid-3 {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            header .container {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            header h1 {
-                font-size: 2.4rem;
-            }
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 0.75rem;
-            padding: 1.25rem;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-            border: 1px solid #e5e7eb;
-        }
-
-        ul {
-            margin-left: 1rem;
-            color: #374151;
-        }
-
-        li {
-            margin-bottom: 0.3rem;
-        }
-
-        label {
-            font-weight: 600;
-            margin-top: 10px;
-            display: block;
-            color: #111827;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-
-        textarea {
-            resize: vertical;
-        }
-
-        footer {
-            background: #0f172a;
-            /* header ile aynı koyu lacivert */
-            color: #e5e7eb;
-            text-align: center;
-            font-size: 0.85rem;
-            padding: 16px 1.5rem;
-        }
-
-        @media (max-width: 700px) {
-            header .container {
-                flex-direction: column !important;
-                text-align: center;
-            }
-        }
-
-        .rgb-title {
-            background: linear-gradient(90deg, #ff0000, #ff8a00, #ffee00, #00ff6a, #00c8ff, #004bff, #b100ff);
-            -webkit-background-clip: text;
-            color: transparent;
-            font-weight: 800;
-            text-shadow: 0 0 4px rgba(0, 0, 0, .25);
-            display: inline-block;
-        }
-    </style>
-</head>
-
-<body>
-
-    <header style="background:#101827; color:white; padding:2.5rem 1.5rem;">
-        <div class="container" style="
-          max-width:1000px;
-          margin:0 auto;
-          display:flex;
-          align-items:center;
-          gap:30px;
-        ">
-
-            <!-- LOGO -->
-            <img src="logo.png" alt="AliTech IT Services Logo"
-                style="width:200px; height:auto; flex-shrink:0; margin-top:10px;">
-
-            <!-- RIGHT SIDE -->
-            <div style="flex:1;">
-
-                <h1 style="font-size:2.2rem; margin-bottom:10px;">
-                    AliTech IT Services
-                </h1>
-
-                <p style="max-width:650px; opacity:0.9; margin-bottom:20px;">
-                    On-site network infrastructure and IT field services across Massachusetts, Rhode Island,
-                    Connecticut, and New Hampshire. Experienced in rack & stack, hardware installation,
-                    decommissioning, WiFi deployments, cabling, and end-user field support for data centers,
-                    retail chains, office environments, and small businesses.
-                </p>
-
-                <div class="cta" style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-                    <a href="tel:+18572340376" class="btn btn-primary">Call Now: (857) 234-0376</a>
-                    <a href="#contact" class="btn btn-outline">Request a Quote</a>
-                    <a href="portfolio.html" class="btn btn-outline">View Projects</a>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <main>
-
-        <!-- SERVICES -->
-        <section id="services">
-            <h2>Services</h2>
-            <p>I provide on-site IT and network field services for data centers, retail chains, offices, and small
-                businesses across MA, RI, CT, and NH.</p>
-
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3>Network Infrastructure</h3>
-                    <ul>
-                        <li>Rack & stack: switches, firewalls, servers</li>
-                        <li>New hardware installation & setup</li>
-                        <li>Decommissioning of old equipment</li>
-                        <li>Move / Add / Change (MAC) work</li>
-                        <li>Network closet clean-up & optimization</li>
-                        <li>Labeling & full documentation photos</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>WiFi Deployment & AP Services</h3>
-                    <ul>
-                        <li>AP mounting & replacement</li>
-                        <li>Controller-agnostic deployments</li>
-                        <li>Cisco, Meraki, Mist AI, Aruba, Ubiquiti</li>
-                        <li>Coverage testing & optimization</li>
-                        <li>Small office, warehouse, and retail WiFi</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Cabling & Low Voltage</h3>
-                    <ul>
-                        <li>MDF/IDF cable runs & terminations</li>
-                        <li>Patch panel installs & expansions</li>
-                        <li>Cable dressing & routing</li>
-                        <li>CAT5e / CAT6 / CAT6A termination</li>
-                        <li>Cable labeling & copper testing</li>
-                        <li>Fiber optic cable testing & cleaning</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Desktop & Field Services</h3>
-                    <ul>
-                        <li>PC / laptop / monitor installation</li>
-                        <li>Imaging & migration support</li>
-                        <li>Printer setup & replacement</li>
-                        <li>POS & kiosk installations</li>
-                        <li>Basic troubleshooting</li>
-                    </ul>
-                </div>
-                <!-- WEB SERVICES -->
-                <div class="card">
-                    <h3>Web & Online Presence Setup</h3>
-                    <ul>
-                        <li>Simple, fast-loading small business websites</li>
-                        <li>Static websites (HTML/CSS) or GitHub Pages deployment</li>
-                        <li>Custom one-page designs</li>
-                        <li>Contact form integration</li>
-                        <li>Domain setup & DNS configuration</li>
-                        <li>Basic business branding support</li>
-                    </ul>
-                </div>
-
-                <!-- custom pc -->
-                <div class="card">
-                    <h3 class="rgb-title">Custom PC Builds</h3>
-                    <ul>
-                        <li>Custom gaming, streaming, and workstation builds</li>
-                        <li>Free, reliable part list consulting based on your budget</li>
-                        <li>Can build with your own parts or recommended components</li>
-                        <li>Full assembly, cable management, BIOS & driver setup</li>
-                        <li>OS installation and basic performance / stability checks</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT FORM -->
-        <section id="contact">
-            <h2>Request a Quote</h2>
-            <p>Please enter your location and describe the work you need.</p>
-        
-            <div class="card">
-                <form id="contactForm">
-                    <input type="hidden" name="access_key" value="3c818fd8-d8bf-41c9-a7c7-c2957101593c">
-        
-                    <label>Your Name</label>
-                    <input type="text" name="name" required>
-        
-                    <label>Email</label>
-                    <input type="email" name="email" required>
-        
-                    <label>Phone Number</label>
-                    <input type="text" name="phone" required>
-        
-                    <label>Your Location (City & State)</label>
-                    <input type="text" name="location" required>
-        
-                    <label>What do you need help with?</label>
-                    <textarea name="message" rows="5" required></textarea>
-        
-                    <button id="contactSubmit" type="submit"
-                        style="margin-top:15px;background:#22c55e;border:none;padding:12px 20px;color:white;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;">
-                        Send Request
-                    </button>
-        
-                    <!-- Kullanıcıya gösterilecek bilgi/hata mesajı -->
-                    <div id="form-status" style="margin-top:10px;font-size:0.9rem;"></div>
-        
-                </form>
-            </div>
-        </section>
-        
-
-    </main>
-
-    <footer>
-        © 2025 AliTech IT Services
-    </footer>
-    <script>
-        const form = document.getElementById('contactForm');
-        const statusBox = document.getElementById('form-status');
-        const submitBtn = document.getElementById('contactSubmit');
-      
-        if (form) {
-          form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-      
-            // Önce mesaj alanını temizle
-            statusBox.textContent = '';
-            statusBox.style.color = '#111827';
-      
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-      
-            try {
-              const formData = new FormData(form);
-      
-              const res = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-              });
-      
-              const data = await res.json();
-      
-              if (data.success) {
-                // Başarılı → teşekkür sayfasına yönlendir
-                window.location.href = 'thankyou.html';
-              } else {
-                // SPAM veya Web3Forms hatası
-                statusBox.style.color = '#b91c1c';
-                statusBox.textContent =
-                  'Your message was flagged as spam. Please add more detail and try again.';
-      
-                console.log('Web3Forms error:', data);
-              }
-            } catch (err) {
-              statusBox.style.color = '#b91c1c';
-              statusBox.textContent =
-                'Unexpected error occurred. Please try again later.';
-              console.error(err);
-            } finally {
-              submitBtn.disabled = false;
-              submitBtn.textContent = 'Send Request';
-            }
-          });
-        }
-      </script>
-      
-</body>
-
->>>>>>> 416e14e056dd0a4198f07712bd7c7db5f24451fd
 </html>
