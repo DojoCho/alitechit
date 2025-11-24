@@ -260,6 +260,7 @@
                         <li>Cable dressing & routing</li>
                         <li>CAT5e / CAT6 / CAT6A termination</li>
                         <li>Cable labeling & copper testing</li>
+                        <li>Fiber optic cable testing & cleaning</li>
                     </ul>
                 </div>
 
@@ -304,41 +305,94 @@
         <section id="contact">
             <h2>Request a Quote</h2>
             <p>Please enter your location and describe the work you need.</p>
-
+        
             <div class="card">
-                <form action="https://api.web3forms.com/submit" method="POST">
+                <form id="contactForm">
                     <input type="hidden" name="access_key" value="3c818fd8-d8bf-41c9-a7c7-c2957101593c">
-                    <input type="hidden" name="redirect" value="https://alitechit.com/thankyou.html">
+        
                     <label>Your Name</label>
                     <input type="text" name="name" required>
-
+        
                     <label>Email</label>
                     <input type="email" name="email" required>
-
+        
                     <label>Phone Number</label>
                     <input type="text" name="phone" required>
-
+        
                     <label>Your Location (City & State)</label>
                     <input type="text" name="location" required>
-
+        
                     <label>What do you need help with?</label>
                     <textarea name="message" rows="5" required></textarea>
-
-                    <button type="submit"
+        
+                    <button id="contactSubmit" type="submit"
                         style="margin-top:15px;background:#22c55e;border:none;padding:12px 20px;color:white;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;">
                         Send Request
                     </button>
+        
+                    <!-- Kullanıcıya gösterilecek bilgi/hata mesajı -->
+                    <div id="form-status" style="margin-top:10px;font-size:0.9rem;"></div>
+        
                 </form>
-
             </div>
         </section>
+        
 
     </main>
 
     <footer>
         © 2025 AliTech IT Services
     </footer>
-
+    <script>
+        const form = document.getElementById('contactForm');
+        const statusBox = document.getElementById('form-status');
+        const submitBtn = document.getElementById('contactSubmit');
+      
+        if (form) {
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+      
+            // Önce mesaj alanını temizle
+            statusBox.textContent = '';
+            statusBox.style.color = '#111827';
+      
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+      
+            try {
+              const formData = new FormData(form);
+      
+              const res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+              });
+      
+              const data = await res.json();
+      
+              if (data.success) {
+                // Başarılı → teşekkür sayfasına yönlendir
+                window.location.href = 'thankyou.html';
+              } else {
+                // SPAM veya Web3Forms hatası
+                statusBox.style.color = '#b91c1c';
+                statusBox.textContent =
+                  'Your message was flagged as spam. Please add more detail and try again.';
+      
+                console.log('Web3Forms error:', data);
+              }
+            } catch (err) {
+              statusBox.style.color = '#b91c1c';
+              statusBox.textContent =
+                'Unexpected error occurred. Please try again later.';
+              console.error(err);
+            } finally {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send Request';
+            }
+          });
+        }
+      </script>
+      
 </body>
 
 </html>
