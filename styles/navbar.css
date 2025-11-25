@@ -1,0 +1,125 @@
+/* NAVBAR WRAPPER */
+.navbar {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* LOGO */
+.navbar .logo img {
+    height: 64px;
+    transition: height .25s ease;
+}
+
+/* DESKTOP LINKS */
+.nav-links {
+    display: flex;
+    gap: 1.4rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.97rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, .12);
+}
+
+/* CTA */
+.nav-cta {
+    background: #22c55e;
+    padding: 8px 16px;
+    border-radius: 7px;
+    color: #04101f;
+    font-weight: 600;
+    border: 1px solid #16a34a;
+}
+
+.nav-cta:hover {
+    background: #16a34a;
+    color: white;
+}
+
+/* MOBILE TOGGLE BUTTON */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    width: 26px;
+    height: 3px;
+    background: #e5e7eb;
+    border-radius: 2px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 760px) {
+
+    /* Hide desktop menu */
+    .nav-links {
+        position: fixed;
+        right: -260px;
+        top: 0;
+        width: 240px;
+        height: 100vh;
+        background: #0f172a;
+        padding: 6rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        transition: 0.35s ease;
+        box-shadow: -6px 0 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .nav-links.open {
+        right: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .navbar .logo img {
+        height: 44px;
+    }
+}
+/* ============================
+   HAMBURGER → X ANİMASYONU
+============================ */
+
+.nav-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Animasyon geçişleri */
+.nav-toggle span {
+    transition: 0.35s ease;
+}
