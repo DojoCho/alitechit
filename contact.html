@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Contact | AliTech IT Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="fav/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="fav/favicon.svg" />
+    <link rel="shortcut icon" href="fav/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png" />
+    <link rel="manifest" href="fav/site.webmanifest" />
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/contact.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a class="logo" href="index.html">
+            <img src="navbar.png" alt="AliTech IT Services Logo" />
+        </a>
+
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="contact.html" class="nav-cta">Contact</a>
+        </div>
+
+        <button class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- CONTACT SECTION -->
+    <main>
+
+        <div class="contact-wrapper">
+            <a href="index.html" class="back">← Back to Home</a>
+            <!-- LEFT SIDE -->
+            <div class="contact-columns">
+                <div class="contact-info-block">
+                    <h2>Get in Touch</h2>
+
+                    <p>
+                        For on-site IT support, network installation, cabling, WiFi deployment, or small business
+                        website services, assistance is available.
+                    </p>
+
+                    <p>
+                        Feel free to fill out the form or use the contact details below.
+                        A response will be provided as quickly as possible.
+                    </p>
+
+                    <div class="info-list">
+                        <h2>Contact Information</h2>
+
+                        <div class="phone-row">
+                            <strong>Phone:</strong>
+                            <span class="phone-number">(857) 234-0376</span>
+                            <a href="tel:+18572340376" class="btn btn-primary btn-sm phone-btn">Call Now</a>
+                        </div>
+
+                        <p><strong>Email:</strong> info@alitechit.com</p>
+
+                        <p><strong>Service Area:</strong> New England</p>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE (FORM) -->
+                <div class="form-card">
+                    <h2 class="form-title">Request a Quote</h2>
+
+                    <form id="contactForm">
+                        <input type="hidden" name="access_key" value="3c818fd8-d8bf-41c9-a7c7-c2957101593c">
+
+                        <label>Your Name</label>
+                        <input type="text" name="name" required>
+
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+
+                        <label>Phone Number (optional)</label>
+                        <input type="text" id="phone" name="phone">
+
+                        <label>Your Location (City & State)</label>
+                        <input type="text" name="location" required>
+
+                        <label>What do you need help with?</label>
+                        <textarea name="message" rows="5" required></textarea>
+
+                        <button id="contactSubmit" type="submit" class="btn btn-primary">Send Request</button>
+
+                        <div id="form-status" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 AliTech IT Services
+    </footer>
+    <script src="scripts/main.js" defer></script>
+</body>
+
+</html>

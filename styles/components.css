@@ -1,0 +1,85 @@
+/* ============================
+   BUTTON STYLES
+   ============================ */
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.3rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.22s ease;
+}
+
+/* --- CLEAN MODERN PRIMARY BUTTON --- */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background: var(--accent);
+    color: #ffffff;
+    border: 1px solid var(--accent-dark);
+
+    padding: 10px 20px;
+    border-radius: 8px;   /* Daha kurumsal */
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all 0.22s ease;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: #16a34a;
+    border-color: #15803d;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+.btn-sm {
+    padding: 0.45rem 0.9rem !important;
+    font-size: 0.85rem;
+    border-radius: 8px;
+}
+/* Outline */
+.btn-outline {
+    background: transparent;
+    color: #e5e7eb;
+    border-color: #4b5563;
+}
+
+.btn-outline:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: #9ca3af;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Dark CTA */
+.btn-dark {
+    background: var(--navy);
+    color: #fff;
+    border-color: #1e293b;
+}
+
+.btn-dark:hover {
+    background: #1e293b;
+    transform: translateY(-2px);
+}
+
+/* ============================
+   RGB GAMING TITLE
+   ============================ */
+
+.rgb-title {
+    background: linear-gradient(90deg, #ff0000, #ff8a00, #ffee00, #00ff6a, #00c8ff, #004bff, #b100ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    text-shadow: 0 0 4px rgba(0,0,0,.25);
+    display: inline-block;
+}

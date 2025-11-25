@@ -1,0 +1,78 @@
+/* ===========================
+   HERO HEADER SECTION
+=========================== */
+.hero {
+    background: #101827;
+    color: white;
+    padding: 2.5rem 1.5rem;
+}
+header.hero {
+    background: #101827;
+    color: white;
+    padding: 2.5rem 1.5rem;
+}
+
+/* HERO LAYOUT */
+.hero-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* HERO LOGO */
+.hero-container img {
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
+    margin-top: 10px;
+}
+.hero-logo {
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
+    margin-top: 10px;
+}
+/* HERO CTA BUTTON ROW */
+.hero-cta {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+.hero-right {
+    flex: 1;
+}
+.hero-title {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+/* Description */
+.hero-desc {
+    max-width: 650px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+/* RESPONSIVE — tablet */
+@media (max-width: 900px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-container img {
+        margin: 0 auto 20px;
+    }
+
+    /* ← BUNU EKLEDİK */
+    .hero-cta {
+        justify-content: center;
+    }
+}
+
+/* RESPONSIVE — small tablets & phones */
+@media (max-width: 600px) {
+    .hero-cta {
+        justify-content: center;
+    }
+}
