@@ -76,3 +76,16 @@ header.hero {
         justify-content: center;
     }
 }
+/* Fix mobile overflow */
+.hero-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    flex-wrap: wrap; /* <-- ÖNEMLİ */
+}
+@media (max-width: 500px) {
+    .hero-container img,
+    .hero-logo {
+        width: 150px;   /* 200 → 150 */
+    }
+}
