@@ -123,3 +123,21 @@
 .nav-toggle span {
     transition: 0.35s ease;
 }
+
+/* Prevent horizontal scroll on mobile */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Improve mobile menu slide-in behavior */
+@media (max-width: 760px) {
+    .nav-links {
+        right: 0;
+        transform: translateX(260px);
+        transition: transform 0.35s ease;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
+    }
+}
