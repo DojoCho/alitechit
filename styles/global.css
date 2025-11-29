@@ -31,6 +31,7 @@ body {
 /* Ensure footer stays at bottom */
 html, body {
     height: 100%;
+    overflow-x: hidden;
 }
 
 body {
