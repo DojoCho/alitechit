@@ -1,220 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>DontBlink</title>
-		<style>
-html, body, #canvas {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
 
-body {
-	color: white;
-	background-color: black;
-	overflow: hidden;
-	touch-action: none;
-}
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>DontBlink</title>
+	<style>
+		html,
+		body,
+		#canvas {
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
 
-#canvas {
-	display: block;
-}
+		body {
+			color: white;
+			background-color: black;
+			overflow: hidden;
+			touch-action: none;
+		}
 
-#canvas:focus {
-	outline: none;
-}
+		#canvas {
+			display: block;
+		}
 
-#status, #status-splash, #status-progress {
-	position: absolute;
-	left: 0;
-	right: 0;
-}
+		#canvas:focus {
+			outline: none;
+		}
 
-#status, #status-splash {
-	top: 0;
-	bottom: 0;
-}
+		#status,
+		#status-splash,
+		#status-progress {
+			position: absolute;
+			left: 0;
+			right: 0;
+		}
 
-#status {
-	background-color: #242424;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	visibility: hidden;
-}
+		#status,
+		#status-splash {
+			top: 0;
+			bottom: 0;
+		}
 
-#status-splash {
-	max-height: 100%;
-	max-width: 100%;
-	margin: auto;
-}
+		#status {
+			background-color: #242424;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			visibility: hidden;
+		}
 
-#status-splash.show-image--false {
-	display: none;
-}
+		#status-splash {
+			max-height: 100%;
+			max-width: 100%;
+			margin: auto;
+		}
 
-#status-splash.fullsize--true {
-	height: 100%;
-	width: 100%;
-	object-fit: contain;
-}
+		#status-splash.show-image--false {
+			display: none;
+		}
 
-#status-splash.use-filter--false {
-	image-rendering: pixelated;
-}
+		#status-splash.fullsize--true {
+			height: 100%;
+			width: 100%;
+			object-fit: contain;
+		}
 
-#status-progress, #status-notice {
-	display: none;
-}
+		#status-splash.use-filter--false {
+			image-rendering: pixelated;
+		}
 
-#status-progress {
-	bottom: 10%;
-	width: 50%;
-	margin: 0 auto;
-}
+		#status-progress,
+		#status-notice {
+			display: none;
+		}
 
-#status-notice {
-	background-color: #5b3943;
-	border-radius: 0.5rem;
-	border: 1px solid #9b3943;
-	color: #e0e0e0;
-	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
-	line-height: 1.3;
-	margin: 0 2rem;
-	overflow: hidden;
-	padding: 1rem;
-	text-align: center;
-	z-index: 1;
-}
-		</style>
-		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
-<link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
+		#status-progress {
+			bottom: 10%;
+			width: 50%;
+			margin: 0 auto;
+		}
 
-	</head>
-	<body>
-		<canvas id="canvas">
-			Your browser does not support the canvas tag.
-		</canvas>
+		#status-notice {
+			background-color: #5b3943;
+			border-radius: 0.5rem;
+			border: 1px solid #9b3943;
+			color: #e0e0e0;
+			font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
+			line-height: 1.3;
+			margin: 0 2rem;
+			overflow: hidden;
+			padding: 1rem;
+			text-align: center;
+			z-index: 1;
+		}
+	</style>
+	<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
+	<link rel="apple-touch-icon" href="index.apple-touch-icon.png" />
 
-		<noscript>
-			Your browser does not support JavaScript.
-		</noscript>
+</head>
 
-		<div id="status">
-			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="index.png" alt="">
-			<progress id="status-progress"></progress>
-			<div id="status-notice"></div>
+<body>
+	<canvas id="canvas">
+		Your browser does not support the canvas tag.
+	</canvas>
+
+	<noscript>
+		Your browser does not support JavaScript.
+	</noscript>
+
+	<div id="status">
+		<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="index.png" alt="">
+		<progress id="status-progress"></progress>
+		<div id="status-notice"></div>
+	</div>
+
+	<script src="index.js"></script>
+	<script>
+		const GODOT_CONFIG = { "args": [], "canvasResizePolicy": 2, "emscriptenPoolSize": 8, "ensureCrossOriginIsolationHeaders": true, "executable": "index", "experimentalVK": false, "fileSizes": { "index.pck": 182532, "index.wasm": 35739700 }, "focusCanvas": true, "gdextensionLibs": [], "godotPoolSize": 4 };
+		const GODOT_THREADS_ENABLED = false;
+		const engine = new Engine(GODOT_CONFIG);
+
+		(function () {
+			const statusOverlay = document.getElementById('status');
+			const statusProgress = document.getElementById('status-progress');
+			const statusNotice = document.getElementById('status-notice');
+
+			let initializing = true;
+			let statusMode = '';
+
+			function setStatusMode(mode) {
+				if (statusMode === mode || !initializing) {
+					return;
+				}
+				if (mode === 'hidden') {
+					statusOverlay.remove();
+					initializing = false;
+					return;
+				}
+				statusOverlay.style.visibility = 'visible';
+				statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
+				statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
+				statusMode = mode;
+			}
+
+			function setStatusNotice(text) {
+				while (statusNotice.lastChild) {
+					statusNotice.removeChild(statusNotice.lastChild);
+				}
+				const lines = text.split('\n');
+				lines.forEach((line) => {
+					statusNotice.appendChild(document.createTextNode(line));
+					statusNotice.appendChild(document.createElement('br'));
+				});
+			}
+
+			function displayFailureNotice(err) {
+				console.error(err);
+				if (err instanceof Error) {
+					setStatusNotice(err.message);
+				} else if (typeof err === 'string') {
+					setStatusNotice(err);
+				} else {
+					setStatusNotice('An unknown error occurred.');
+				}
+				setStatusMode('notice');
+				initializing = false;
+			}
+
+			const missing = Engine.getMissingFeatures({
+				threads: GODOT_THREADS_ENABLED,
+			});
+
+			if (missing.length !== 0) {
+				if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
+					let serviceWorkerRegistrationPromise;
+					try {
+						serviceWorkerRegistrationPromise = navigator.serviceWorker.getRegistration();
+					} catch (err) {
+						serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
+					}
+					// There's a chance that installing the service worker would fix the issue
+					Promise.race([
+						serviceWorkerRegistrationPromise.then((registration) => {
+							if (registration != null) {
+								return Promise.reject(new Error('Service worker already exists.'));
+							}
+							return registration;
+						}).then(() => engine.installServiceWorker()),
+						// For some reason, `getRegistration()` can stall
+						new Promise((resolve) => {
+							setTimeout(() => resolve(), 2000);
+						}),
+					]).then(() => {
+						// Reload if there was no error.
+						window.location.reload();
+					}).catch((err) => {
+						console.error('Error while registering service worker:', err);
+					});
+				} else {
+					// Display the message as usual
+					const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
+					displayFailureNotice(missingMsg + missing.join('\n'));
+				}
+			} else {
+				setStatusMode('progress');
+				engine.startGame({
+					'onProgress': function (current, total) {
+						if (current > 0 && total > 0) {
+							statusProgress.value = current;
+							statusProgress.max = total;
+						} else {
+							statusProgress.removeAttribute('value');
+							statusProgress.removeAttribute('max');
+						}
+					},
+				}).then(() => {
+					setStatusMode('hidden');
+				}, displayFailureNotice);
+			}
+		}());
+	</script>
+	<div id="firebase-ui-shell">
+		<div class="firebase-card auth-card">
+			<div class="auth-header">
+				<div id="auth-user-avatar" class="auth-avatar">?</div>
+				<div>
+					<div id="auth-user-name" class="auth-user-name">Not signed in</div>
+					<div id="auth-status" class="auth-status">Choose a sign-in method</div>
+				</div>
+			</div>
+
+			<div class="auth-actions">
+				<button id="btn-google-login">Sign in with Google</button>
+				<button id="btn-guest-login">Continue as Guest</button>
+				<button id="btn-logout">Sign Out</button>
+			</div>
 		</div>
 
-		<script src="index.js"></script>
-		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":183092,"index.wasm":35739700},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
-const GODOT_THREADS_ENABLED = false;
-const engine = new Engine(GODOT_CONFIG);
+		<div class="firebase-card leaderboard-card">
+			<div class="lb-title">World Top 10</div>
+			<div id="my-best-score" class="my-best-score">My Best: 0</div>
+			<div id="top10-list" class="top10-list"></div>
+		</div>
+	</div>
 
-(function () {
-	const statusOverlay = document.getElementById('status');
-	const statusProgress = document.getElementById('status-progress');
-	const statusNotice = document.getElementById('status-notice');
+	<div id="guest-name-modal" class="guest-modal" style="display:none;">
+		<div class="guest-modal-box">
+			<div class="guest-modal-title">Choose your display name</div>
+			<input id="guest-name-input" maxlength="24" placeholder="Wanderer381" />
+			<button id="guest-name-save">Save Name</button>
+		</div>
+	</div>
 
-	let initializing = true;
-	let statusMode = '';
-
-	function setStatusMode(mode) {
-		if (statusMode === mode || !initializing) {
-			return;
+	<style>
+		#firebase-ui-shell {
+			position: fixed;
+			top: 12px;
+			right: 12px;
+			width: min(360px, calc(100vw - 24px));
+			z-index: 99999;
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			font-family: Arial, sans-serif;
 		}
-		if (mode === 'hidden') {
-			statusOverlay.remove();
-			initializing = false;
-			return;
+
+		.firebase-card {
+			background: rgba(10, 18, 34, 0.88);
+			color: white;
+			border: 1px solid rgba(110, 160, 255, 0.35);
+			border-radius: 16px;
+			padding: 14px;
+			backdrop-filter: blur(8px);
+			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 		}
-		statusOverlay.style.visibility = 'visible';
-		statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
-		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
-		statusMode = mode;
-	}
 
-	function setStatusNotice(text) {
-		while (statusNotice.lastChild) {
-			statusNotice.removeChild(statusNotice.lastChild);
+		.auth-header {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 12px;
 		}
-		const lines = text.split('\n');
-		lines.forEach((line) => {
-			statusNotice.appendChild(document.createTextNode(line));
-			statusNotice.appendChild(document.createElement('br'));
-		});
-	}
 
-	function displayFailureNotice(err) {
-		console.error(err);
-		if (err instanceof Error) {
-			setStatusNotice(err.message);
-		} else if (typeof err === 'string') {
-			setStatusNotice(err);
-		} else {
-			setStatusNotice('An unknown error occurred.');
+		.auth-avatar {
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(70, 110, 180, 0.9);
+			font-weight: 700;
 		}
-		setStatusMode('notice');
-		initializing = false;
-	}
 
-	const missing = Engine.getMissingFeatures({
-		threads: GODOT_THREADS_ENABLED,
-	});
+		.auth-user-name {
+			font-size: 15px;
+			font-weight: 700;
+		}
 
-	if (missing.length !== 0) {
-		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
-			let serviceWorkerRegistrationPromise;
-			try {
-				serviceWorkerRegistrationPromise = navigator.serviceWorker.getRegistration();
-			} catch (err) {
-				serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
+		.auth-status {
+			font-size: 12px;
+			opacity: 0.85;
+			margin-top: 3px;
+		}
+
+		.auth-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+
+		.auth-actions button,
+		#guest-name-save {
+			border: none;
+			border-radius: 10px;
+			padding: 10px 12px;
+			cursor: pointer;
+			background: rgba(56, 89, 150, 0.95);
+			color: white;
+			font-weight: 600;
+		}
+
+		.lb-title {
+			font-size: 18px;
+			font-weight: 700;
+			margin-bottom: 8px;
+		}
+
+		.my-best-score {
+			font-size: 13px;
+			opacity: 0.9;
+			margin-bottom: 10px;
+		}
+
+		.top10-list {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.lb-row {
+			display: grid;
+			grid-template-columns: 38px 34px 1fr auto;
+			align-items: center;
+			gap: 8px;
+			background: rgba(255, 255, 255, 0.04);
+			border-radius: 10px;
+			padding: 8px;
+		}
+
+		.lb-rank {
+			font-weight: 700;
+			opacity: 0.92;
+		}
+
+		.lb-avatar {
+			width: 30px;
+			height: 30px;
+		}
+
+		.lb-avatar-img,
+		.lb-avatar-fallback {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+		}
+
+		.lb-avatar-img {
+			object-fit: cover;
+		}
+
+		.lb-avatar-fallback {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(70, 110, 180, 0.9);
+			font-size: 12px;
+			font-weight: 700;
+		}
+
+		.lb-name {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.lb-score {
+			font-weight: 700;
+		}
+
+		.guest-modal {
+			position: fixed;
+			inset: 0;
+			z-index: 100000;
+			background: rgba(0, 0, 0, 0.55);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 16px;
+		}
+
+		.guest-modal-box {
+			width: min(360px, 100%);
+			background: #111827;
+			color: white;
+			border-radius: 16px;
+			padding: 18px;
+			border: 1px solid rgba(110, 160, 255, 0.35);
+		}
+
+		.guest-modal-title {
+			font-size: 18px;
+			font-weight: 700;
+			margin-bottom: 12px;
+		}
+
+		#guest-name-input {
+			width: 100%;
+			box-sizing: border-box;
+			margin-bottom: 12px;
+			border-radius: 10px;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			background: rgba(255, 255, 255, 0.06);
+			color: white;
+			padding: 12px;
+		}
+
+		@media (max-width: 700px) {
+			#firebase-ui-shell {
+				top: auto;
+				bottom: 10px;
+				right: 10px;
+				left: 10px;
+				width: auto;
 			}
-			// There's a chance that installing the service worker would fix the issue
-			Promise.race([
-				serviceWorkerRegistrationPromise.then((registration) => {
-					if (registration != null) {
-						return Promise.reject(new Error('Service worker already exists.'));
-					}
-					return registration;
-				}).then(() => engine.installServiceWorker()),
-				// For some reason, `getRegistration()` can stall
-				new Promise((resolve) => {
-					setTimeout(() => resolve(), 2000);
-				}),
-			]).then(() => {
-				// Reload if there was no error.
-				window.location.reload();
-			}).catch((err) => {
-				console.error('Error while registering service worker:', err);
-			});
-		} else {
-			// Display the message as usual
-			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
-			displayFailureNotice(missingMsg + missing.join('\n'));
 		}
-	} else {
-		setStatusMode('progress');
-		engine.startGame({
-			'onProgress': function (current, total) {
-				if (current > 0 && total > 0) {
-					statusProgress.value = current;
-					statusProgress.max = total;
-				} else {
-					statusProgress.removeAttribute('value');
-					statusProgress.removeAttribute('max');
-				}
-			},
-		}).then(() => {
-			setStatusMode('hidden');
-		}, displayFailureNotice);
-	}
-}());
-		</script>
-	</body>
-</html>
+	</style>
 
+	<script type="module" src="./firebase-init.js"></script>
+	<script type="module" src="./auth-ui.js"></script>
+	<script type="module" src="./leaderboard.js"></script>
+</body>
+
+</html>
