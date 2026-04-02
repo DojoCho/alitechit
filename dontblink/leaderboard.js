@@ -2,7 +2,6 @@ import { auth, db } from "./firebase-init.js";
 
 import {
   collection,
-  addDoc,
   doc,
   getDoc,
   getDocs,
@@ -39,7 +38,7 @@ function renderTop10(rows) {
           <div class="lb-rank">#${index + 1}</div>
           <div class="lb-avatar">${avatar}</div>
           <div class="lb-name">${row.displayName || "Player"}</div>
-          <div class="lb-score">${row.score ?? 0}</div>
+          <div class="lb-score">${row.bestScore ?? 0}</div>
         </div>
       `;
     })
@@ -49,7 +48,7 @@ function renderTop10(rows) {
 export async function refreshTop10() {
   const q = query(
     collection(db, "leaderboard_entries"),
-    orderBy("score", "desc"),
+    orderBy("bestScore", "desc"),
     limit(10)
   );
 
@@ -78,7 +77,11 @@ export async function submitScore(score) {
     return;
   }
 
+  const numericScore = Number(score) || 0;
+
   const userRef = doc(db, "users", user.uid);
+  const lbRef = doc(db, "leaderboard_entries", user.uid);
+
   const userSnap = await getDoc(userRef);
 
   if (!userSnap.exists()) {
@@ -91,23 +94,33 @@ export async function submitScore(score) {
   const avatarUrl = userData.avatarUrl || "";
   const bestScore = userData.bestScore || 0;
 
-  await addDoc(collection(db, "leaderboard_entries"), {
-    uid: user.uid,
-    displayName,
-    avatarUrl,
-    score: Number(score) || 0,
-    createdAt: serverTimestamp()
-  });
-
-  if ((Number(score) || 0) > bestScore) {
-    await setDoc(
-      userRef,
-      {
-        bestScore: Number(score) || 0
-      },
-      { merge: true }
-    );
+  // Yeni skor eski best'i geçmiyorsa hiçbir şey yapma
+  if (numericScore <= bestScore) {
+    await refreshTop10();
+    return;
   }
+
+  // Önce user best score güncelle
+  await setDoc(
+    userRef,
+    {
+      bestScore: numericScore
+    },
+    { merge: true }
+  );
+
+  // Leaderboard'da user başına tek kayıt tut
+  await setDoc(
+    lbRef,
+    {
+      uid: user.uid,
+      displayName,
+      avatarUrl,
+      bestScore: numericScore,
+      updatedAt: serverTimestamp()
+    },
+    { merge: true }
+  );
 
   await refreshTop10();
 }
