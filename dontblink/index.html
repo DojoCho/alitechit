@@ -119,7 +119,7 @@
 
 	<script src="index.js"></script>
 	<script>
-		const GODOT_CONFIG = { "args": [], "canvasResizePolicy": 2, "emscriptenPoolSize": 8, "ensureCrossOriginIsolationHeaders": true, "executable": "index", "experimentalVK": false, "fileSizes": { "index.pck": 182532, "index.wasm": 35739700 }, "focusCanvas": true, "gdextensionLibs": [], "godotPoolSize": 4 };
+		const GODOT_CONFIG = { "args": [], "canvasResizePolicy": 2, "emscriptenPoolSize": 8, "ensureCrossOriginIsolationHeaders": true, "executable": "index", "experimentalVK": false, "fileSizes": { "index.pck": 182932, "index.wasm": 35739700 }, "focusCanvas": true, "gdextensionLibs": [], "godotPoolSize": 4 };
 		const GODOT_THREADS_ENABLED = false;
 		const engine = new Engine(GODOT_CONFIG);
 
@@ -224,226 +224,162 @@
 		}());
 	</script>
 	<div id="firebase-ui-shell">
-		<div class="firebase-card auth-card">
-			<div class="auth-header">
-				<div id="auth-user-avatar" class="auth-avatar">?</div>
-				<div>
-					<div id="auth-user-name" class="auth-user-name">Not signed in</div>
-					<div id="auth-status" class="auth-status">Choose a sign-in method</div>
-				</div>
+
+		<!-- TOP BAR (küçük, mobil dostu) -->
+		<div class="top-bar">
+			<div class="left">
+				<div id="auth-user-avatar" class="avatar">?</div>
+				<div id="auth-user-name">Guest</div>
 			</div>
 
-			<div class="auth-actions">
-				<button id="btn-google-login">Sign in with Google</button>
-				<button id="btn-guest-login">Continue as Guest</button>
-				<button id="btn-logout">Sign Out</button>
+			<div class="right">
+				<button id="btn-google-login">G</button>
+				<button id="btn-guest-login">Guest</button>
+				<button id="btn-logout">⎋</button>
+				<button id="btn-open-leaderboard">🏆</button>
 			</div>
 		</div>
 
-		<div class="firebase-card leaderboard-card">
-			<div class="lb-title">World Top 10</div>
-			<div id="my-best-score" class="my-best-score">My Best: 0</div>
-			<div id="top10-list" class="top10-list"></div>
-		</div>
-	</div>
+		<!-- LEADERBOARD (hidden) -->
+		<div id="leaderboard-panel" class="leaderboard-panel hidden">
+			<div class="lb-header">
+				<span>🏆 Top 10</span>
+				<button id="btn-close-leaderboard">✕</button>
+			</div>
 
-	<div id="guest-name-modal" class="guest-modal" style="display:none;">
-		<div class="guest-modal-box">
-			<div class="guest-modal-title">Choose your display name</div>
-			<input id="guest-name-input" maxlength="24" placeholder="Wanderer381" />
-			<button id="guest-name-save">Save Name</button>
+			<div id="my-best-score">My Best: 0</div>
+			<div id="top10-list"></div>
 		</div>
+
 	</div>
 
 	<style>
+		/* ---------- BASE ---------- */
 		#firebase-ui-shell {
 			position: fixed;
-			top: 12px;
-			right: 12px;
-			width: min(360px, calc(100vw - 24px));
+			top: 0;
+			left: 0;
+			width: 100%;
 			z-index: 99999;
+			pointer-events: none;
+			font-family: Arial;
+		}
+
+		/* ---------- TOP BAR ---------- */
+		.top-bar {
 			display: flex;
-			flex-direction: column;
-			gap: 12px;
-			font-family: Arial, sans-serif;
+			justify-content: space-between;
+			align-items: center;
+			padding: 8px 10px;
+			background: rgba(10, 18, 34, 0.6);
+			backdrop-filter: blur(6px);
+			pointer-events: all;
 		}
 
-		.firebase-card {
-			background: rgba(10, 18, 34, 0.88);
-			color: white;
-			border: 1px solid rgba(110, 160, 255, 0.35);
-			border-radius: 16px;
-			padding: 14px;
-			backdrop-filter: blur(8px);
-			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-		}
-
-		.auth-header {
+		.top-bar .left {
 			display: flex;
 			align-items: center;
-			gap: 10px;
-			margin-bottom: 12px;
+			gap: 8px;
+			color: white;
+			font-size: 13px;
 		}
 
-		.auth-avatar {
-			width: 42px;
-			height: 42px;
+		.avatar {
+			width: 28px;
+			height: 28px;
 			border-radius: 50%;
-			overflow: hidden;
+			background: #4466aa;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background: rgba(70, 110, 180, 0.9);
-			font-weight: 700;
+			font-weight: bold;
 		}
 
-		.auth-user-name {
-			font-size: 15px;
-			font-weight: 700;
-		}
-
-		.auth-status {
-			font-size: 12px;
-			opacity: 0.85;
-			margin-top: 3px;
-		}
-
-		.auth-actions {
+		.top-bar .right {
 			display: flex;
-			flex-wrap: wrap;
-			gap: 8px;
+			gap: 6px;
 		}
 
-		.auth-actions button,
-		#guest-name-save {
+		.top-bar button {
 			border: none;
-			border-radius: 10px;
-			padding: 10px 12px;
-			cursor: pointer;
-			background: rgba(56, 89, 150, 0.95);
+			padding: 6px 8px;
+			border-radius: 8px;
+			background: #385996;
 			color: white;
-			font-weight: 600;
+			font-size: 12px;
+			cursor: pointer;
 		}
 
-		.lb-title {
-			font-size: 18px;
-			font-weight: 700;
-			margin-bottom: 8px;
+		/* ---------- LEADERBOARD ---------- */
+		.leaderboard-panel {
+			position: fixed;
+			top: 50px;
+			right: 10px;
+			width: 280px;
+			max-height: 60vh;
+			overflow-y: auto;
+			background: rgba(10, 18, 34, 0.95);
+			border-radius: 12px;
+			padding: 12px;
+			color: white;
+			pointer-events: all;
 		}
 
-		.my-best-score {
-			font-size: 13px;
-			opacity: 0.9;
+		.hidden {
+			display: none;
+		}
+
+		.lb-header {
+			display: flex;
+			justify-content: space-between;
 			margin-bottom: 10px;
+			font-weight: bold;
 		}
 
-		.top10-list {
+		#top10-list {
 			display: flex;
 			flex-direction: column;
-			gap: 8px;
+			gap: 6px;
 		}
 
 		.lb-row {
 			display: grid;
-			grid-template-columns: 38px 34px 1fr auto;
-			align-items: center;
-			gap: 8px;
-			background: rgba(255, 255, 255, 0.04);
-			border-radius: 10px;
-			padding: 8px;
+			grid-template-columns: 30px 1fr auto;
+			gap: 6px;
+			padding: 6px;
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 8px;
 		}
 
-		.lb-rank {
-			font-weight: 700;
-			opacity: 0.92;
-		}
+		/* ---------- DESKTOP OVERRIDE ---------- */
+		@media (min-width: 768px) {
 
-		.lb-avatar {
-			width: 30px;
-			height: 30px;
-		}
+			.top-bar {
+				padding: 12px 20px;
+			}
 
-		.lb-avatar-img,
-		.lb-avatar-fallback {
-			width: 30px;
-			height: 30px;
-			border-radius: 50%;
-		}
+			.top-bar button {
+				padding: 8px 12px;
+				font-size: 14px;
+			}
 
-		.lb-avatar-img {
-			object-fit: cover;
-		}
-
-		.lb-avatar-fallback {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background: rgba(70, 110, 180, 0.9);
-			font-size: 12px;
-			font-weight: 700;
-		}
-
-		.lb-name {
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-
-		.lb-score {
-			font-weight: 700;
-		}
-
-		.guest-modal {
-			position: fixed;
-			inset: 0;
-			z-index: 100000;
-			background: rgba(0, 0, 0, 0.55);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 16px;
-		}
-
-		.guest-modal-box {
-			width: min(360px, 100%);
-			background: #111827;
-			color: white;
-			border-radius: 16px;
-			padding: 18px;
-			border: 1px solid rgba(110, 160, 255, 0.35);
-		}
-
-		.guest-modal-title {
-			font-size: 18px;
-			font-weight: 700;
-			margin-bottom: 12px;
-		}
-
-		#guest-name-input {
-			width: 100%;
-			box-sizing: border-box;
-			margin-bottom: 12px;
-			border-radius: 10px;
-			border: 1px solid rgba(255, 255, 255, 0.15);
-			background: rgba(255, 255, 255, 0.06);
-			color: white;
-			padding: 12px;
-		}
-
-		@media (max-width: 700px) {
-			#firebase-ui-shell {
-				top: auto;
-				bottom: 10px;
-				right: 10px;
-				left: 10px;
-				width: auto;
+			.leaderboard-panel {
+				width: 340px;
 			}
 		}
 	</style>
 
-	<script type="module" src="./firebase-init.js"></script>
-	<script type="module" src="./auth-ui.js"></script>
-	<script type="module" src="./leaderboard.js"></script>
+	<script>
+		const panel = document.getElementById("leaderboard-panel");
+
+		document.getElementById("btn-open-leaderboard").onclick = () => {
+			panel.classList.remove("hidden");
+		};
+
+		document.getElementById("btn-close-leaderboard").onclick = () => {
+			panel.classList.add("hidden");
+		};
+	</script>
 </body>
 
 </html>
