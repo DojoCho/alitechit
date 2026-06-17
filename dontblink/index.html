@@ -236,7 +236,7 @@
 			</div>
 
 			<div class="right">
-				<button id="btn-google-login" class="btn-google">Sign in with Google</button>
+				<button id="btn-google-login" class="btn-google" title="Sign in with Google"><span class="g-badge">G</span>Sign in</button>
 				<button id="btn-guest-login" class="btn-guest">Guest</button>
 				<button id="btn-logout" class="btn-logout">Sign Out</button>
 				<button id="btn-open-leaderboard" class="btn-trophy">🏆</button>
@@ -351,7 +351,24 @@
 
 		.btn-google {
 			background: linear-gradient(180deg, #4d73b8, #385996);
-			min-width: 146px;
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+		}
+
+		.btn-google .g-badge {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			background: #ffffff;
+			color: #4285f4;
+			font-weight: 700;
+			font-size: 12px;
+			line-height: 1;
+			font-family: Arial, sans-serif;
 		}
 
 		.btn-guest {
@@ -452,21 +469,14 @@
 			}
 
 			.btn-google {
-				min-width: auto;
 				padding: 7px 10px;
 				font-size: 12px;
 			}
 
-			.btn-google::after {
-				content: "Google";
-			}
-
-			.btn-google {
-				font-size: 0;
-			}
-
-			.btn-google::after {
-				font-size: 12px;
+			.btn-google .g-badge {
+				width: 16px;
+				height: 16px;
+				font-size: 11px;
 			}
 
 			.btn-guest,
@@ -488,7 +498,7 @@
 	</style>
 	<script type="module" src="./firebase-init.js"></script>
 	<script type="module" src="./leaderboard.js"></script>
-	<script type="module" src="./auth-ui.js"></script>
+	<script type="module" src="./auth-ui.js?v=2"></script>
 	<script>
 		const panel = document.getElementById("leaderboard-panel");
 

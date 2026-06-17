@@ -113,6 +113,9 @@ function renderUser(profile) {
     if (els.authStatus) els.authStatus.textContent = "Choose a sign-in method";
     setAvatar("", "?");
     if (els.logoutBtn) els.logoutBtn.style.display = "none";
+    // Signed out → offer sign-in options
+    if (els.googleBtn) els.googleBtn.style.display = "";
+    if (els.guestBtn) els.guestBtn.style.display = "";
     return;
   }
 
@@ -127,6 +130,9 @@ function renderUser(profile) {
   setAvatar(profile.avatarUrl, fallback);
 
   if (els.logoutBtn) els.logoutBtn.style.display = "inline-flex";
+  // Already signed in → no need for the sign-in buttons
+  if (els.googleBtn) els.googleBtn.style.display = "none";
+  if (els.guestBtn) els.guestBtn.style.display = "none";
 }
 
 async function handleGoogleLogin() {
