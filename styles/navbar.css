@@ -3,7 +3,7 @@
     background: rgba(13, 20, 38, 0.9);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: 0.55rem 1.5rem;
+    padding: 0.35rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,26 +12,26 @@
     top: 0;
     z-index: 999;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
     transition: padding .25s ease, background .25s ease;
 }
 
 /* SHRINK ON SCROLL */
 .navbar.scrolled {
-    padding-top: 0.35rem;
-    padding-bottom: 0.35rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
     background: rgba(13, 20, 38, 0.97);
 }
 
 /* LOGO */
 .navbar .logo img {
-    height: 52px;
+    height: 40px;
     transition: height .25s ease;
     display: block;
 }
 
 .navbar.scrolled .logo img {
-    height: 42px;
+    height: 34px;
 }
 
 /* RIGHT-SIDE ACTIONS (call + toggle) */

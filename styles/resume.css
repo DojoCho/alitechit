@@ -41,7 +41,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.55rem 1.5rem;
+  padding: 0.35rem 1.5rem;
   background: rgba(13, 20, 38, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -49,7 +49,7 @@ a {
 }
 
 .resume-topbar img {
-  height: 46px;
+  height: 38px;
   display: block;
 }
 
