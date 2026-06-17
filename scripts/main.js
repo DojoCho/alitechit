@@ -20,6 +20,29 @@ if (navToggle) {
 }
 
 // ===============================
+// ACTIVE PAGE LINK HIGHLIGHT
+// ===============================
+const currentPage = (window.location.pathname.split("/").pop() || "index.html");
+document.querySelectorAll(".nav-links a").forEach((link) => {
+    const href = link.getAttribute("href");
+    if (href === currentPage || (currentPage === "" && href === "index.html")) {
+        link.classList.add("active");
+    }
+});
+
+// ===============================
+// SHRINK NAVBAR ON SCROLL
+// ===============================
+const navbar = document.querySelector(".navbar");
+if (navbar) {
+    const onScroll = () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 30);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+}
+
+// ===============================
 // FILTERS (only on portfolio page)
 // ===============================
 const filterButtons = document.querySelectorAll('.filter-btn');

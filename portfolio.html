@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="fav/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png" />
     <link rel="manifest" href="fav/site.webmanifest" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/navbar.css">
@@ -25,24 +26,88 @@
             <img src="navbar.png" alt="AliTech IT Services Logo" />
         </a>
 
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="contact.html" class="nav-cta">Contact</a>
+        <div class="nav-right">
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html" class="nav-cta">Contact</a>
+            </div>
+            <a href="tel:+18572340376" class="nav-call">
+                <i class="ti ti-phone" aria-hidden="true"></i>
+                <span class="call-text">(857) 234-0376</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-
-        <button class="nav-toggle" id="navToggle">
-            <span></span><span></span><span></span>
-        </button>
     </nav>
     <header>
-        <h1>Portfolio & Project Gallery</h1>
-        <p>Examples of on-site IT work, cabling, WiFi deployments, network cleanups, and small business websites.</p>
+        <span class="eyebrow"><i class="ti ti-briefcase" aria-hidden="true"></i> Portfolio</span>
+        <h1>Project Gallery</h1>
+        <p>Custom websites and web apps, plus on-site IT work — cabling, WiFi deployments, and
+            network cleanups across New England.</p>
     </header>
 
     <main>
 
         <a href="index.html" class="back">← Back to Home</a>
+
+        <!-- FEATURED WEB / SOFTWARE PROJECTS -->
+        <section class="featured">
+            <span class="eyebrow"><i class="ti ti-star" aria-hidden="true"></i> Featured Work</span>
+            <h2>Web &amp; Software Projects</h2>
+            <p>Full-stack websites and web apps designed, built, and deployed end to end — including
+                custom admin panels and live data.</p>
+
+            <div class="featured-grid">
+                <!-- ATLAS -->
+                <article class="feat-card">
+                    <div class="feat-shot">
+                        <span class="feat-live"><span class="dot"></span> Live</span>
+                        <img src="projects/atlas-web.jpg" alt="Atlas Locksmith & Security website" loading="lazy">
+                    </div>
+                    <div class="feat-body">
+                        <h3>Atlas Locksmith &amp; Security</h3>
+                        <p class="feat-sub">Mobile locksmith · Greater Boston</p>
+                        <p class="feat-desc">Full marketing site with a smart automotive booking flow, live
+                            photo gallery, and a custom admin panel. Multi-language (EN / ES / TR).</p>
+                        <div class="stack">
+                            <span>React</span><span>Vite</span><span>Firebase</span><span>Cloudinary</span>
+                        </div>
+                        <div class="feat-actions">
+                            <a href="https://atlaslocksmithsecurity.com" target="_blank" rel="noopener"
+                                class="btn btn-primary btn-sm">Visit live site
+                                <i class="ti ti-external-link" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- GREATS -->
+                <article class="feat-card">
+                    <div class="feat-shot">
+                        <span class="feat-live"><span class="dot"></span> Live</span>
+                        <img src="projects/greats-web.jpg" alt="Greats Auto Group website" loading="lazy">
+                    </div>
+                    <div class="feat-body">
+                        <h3>Greats Auto Group</h3>
+                        <p class="feat-sub">Used-car dealership · Boston</p>
+                        <p class="feat-desc">Vehicle inventory showcase with VIN decoding, photo management,
+                            and a Firebase-backed admin dashboard for the whole catalog.</p>
+                        <div class="stack">
+                            <span>React</span><span>Firebase</span><span>Cloudinary</span><span>NHTSA API</span>
+                        </div>
+                        <div class="feat-actions">
+                            <a href="https://greatsautogroup.com" target="_blank" rel="noopener"
+                                class="btn btn-primary btn-sm">Visit live site
+                                <i class="ti ti-external-link" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ON-SITE IT PROJECTS -->
+        <h2 class="section-title">On-Site IT &amp; Network Projects</h2>
 
         <!-- FILTERS -->
         <div class="filter-bar">
@@ -50,7 +115,6 @@
             <button class="filter-btn" data-filter="network">Network / Rack</button>
             <button class="filter-btn" data-filter="wifi">WiFi & AP</button>
             <button class="filter-btn" data-filter="cabling">Cabling</button>
-            <button class="filter-btn" data-filter="web">Websites</button>
             <button class="filter-btn" data-filter="beforeafter">Before / After</button>
         </div>
 
@@ -127,24 +191,6 @@
                 </div>
                 <div class="equipment">
                     <strong>Equipment:</strong> Laptops, docks, dual monitors, imaging USB, cable management supplies.
-                </div>
-            </div>
-
-            <!-- WEBSITE PROJECT -->
-            <div class="card" data-category="web">
-                <div class="thumb-wrapper" data-full="projects/web-smallbiz-thumb.jpg">
-                    <span class="badge">Website</span>
-                    <img src="projects/web-smallbiz-thumb.jpg" alt="Website project">
-                </div>
-                <h3>Small Business Website</h3>
-                <p>Built a clean one-page site for a local contractor, including contact form, domain setup, and email
-                    forwarding.</p>
-                <div class="meta">
-                    <span><strong>Date:</strong> November 2024</span>
-                    <span><strong>Location:</strong> Hingham, MA</span>
-                </div>
-                <div class="equipment">
-                    <strong>Stack:</strong> HTML/CSS, GitHub Pages, FormSubmit, DNS configuration.
                 </div>
             </div>
 
