@@ -3,15 +3,16 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>AliTech IT Services | On-Site IT & Networking</title>
+    <title>AliTech IT Services | Software Development & On-Site IT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="On-site network infrastructure and IT field services across New England. Rack & stack, server and switch installation, decommissioning, cabling, WiFi deployments, and field support for data centers, offices, and retail chains." />
+        content="Full-stack software and web development plus on-site IT and network infrastructure across New England. Custom web apps, e-commerce, booking systems, rack & stack, WiFi deployment, cabling, and field support for businesses of every size." />
     <link rel="icon" type="image/png" href="fav/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="fav/favicon.svg" />
     <link rel="shortcut icon" href="fav/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png" />
     <link rel="manifest" href="fav/site.webmanifest" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/navbar.css">
@@ -29,7 +30,7 @@
             <a href="portfolio.html">Portfolio</a>
             <a href="contact.html" class="nav-cta">Contact</a>
         </div>
-        <button class="nav-toggle" id="navToggle">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
             <span></span><span></span><span></span>
         </button>
     </nav>
@@ -39,132 +40,227 @@
             <img src="logo.png" alt="AliTech IT Services Logo">
             <!-- RIGHT SIDE -->
             <div class="hero-right">
+                <span class="hero-badge">
+                    <i class="ti ti-map-pin" aria-hidden="true"></i> Serving New England
+                </span>
                 <h1 class="hero-title">
-                    AliTech IT Services
+                    Custom <span class="accent">software</span> &amp; on-site <span class="accent">IT</span>,
+                    handled end to end.
                 </h1>
                 <p class="hero-desc">
-                    On-site IT field services and network infrastructure support across New England.
-                    Specializing in rack & stack, hardware installation, WiFi deployments, cabling, decommissioning, and
-                    end-user field support for data centers, retail chains, offices, and small businesses.
+                    Full-stack web &amp; software development — from custom web apps, e-commerce, and booking
+                    systems to network infrastructure, WiFi, cabling, and field support. One partner for everything
+                    technical, A to Z.
                 </p>
                 <div class="hero-cta">
-                    <a href="contact.html" class="btn btn-outline">Request a Quote</a>
-                    <a href="portfolio.html" class="btn btn-outline">View Projects</a>
-                    <a href="contact.html" class="btn btn-outline">
-                        Contact Us
+                    <a href="contact.html" class="btn btn-primary">
+                        <i class="ti ti-file-text" aria-hidden="true"></i> Request a Quote
                     </a>
+                    <a href="portfolio.html" class="btn btn-outline">
+                        <i class="ti ti-photo" aria-hidden="true"></i> View Projects
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="num">A&ndash;Z</div>
+                        <div class="label">software &amp; IT support</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="num">6+</div>
+                        <div class="label">states served</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="num">100%</div>
+                        <div class="label">documented work</div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
     <main>
-        <!-- SERVICES -->
-        <section id="services">
-            <h2>Services</h2>
-            <p>Serving data centers, retail chains, offices, and small businesses — as well as homes — throughout the New England region with reliable on-site IT support.</p>
+        <!-- SOFTWARE & WEB DEVELOPMENT -->
+        <section class="service-section" id="software">
+            <div class="section-head">
+                <span class="eyebrow"><i class="ti ti-code" aria-hidden="true"></i> Software &amp; Web</span>
+                <h2>Software &amp; Web Development</h2>
+                <p>Professional, end-to-end software services — from idea and design to development, deployment, and
+                    ongoing maintenance. Whatever you need built, it can be built.</p>
+            </div>
             <div class="grid grid-3">
                 <div class="card">
-                    <h3>Computer Repair & Hardware Services</h3>
+                    <span class="card-icon"><i class="ti ti-rocket" aria-hidden="true"></i></span>
+                    <h3>Custom Software, A to Z</h3>
                     <ul>
-                        <li>Laptop screen replacement</li>
-                        <li>SSD / RAM upgrades</li>
-                        <li>Desktop hardware diagnostics</li>
-                        <li>Power supply & motherboard repairs</li>
-                        <li>Overheating & fan replacement</li>
-                        <li>General PC troubleshooting</li>
+                        <li>From concept and UX design to launch</li>
+                        <li>Tailored solutions for your workflow</li>
+                        <li>Clean, maintainable, scalable code</li>
+                        <li>Ongoing support &amp; iteration</li>
+                        <li>Clear communication at every step</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>Mobile Phone Repair</h3>
+                    <span class="card-icon"><i class="ti ti-device-laptop" aria-hidden="true"></i></span>
+                    <h3>Web &amp; Web App Development</h3>
                     <ul>
-                        <li>iPhone & Android screen replacement</li>
-                        <li>Battery replacement</li>
-                        <li>Charging port repair</li>
-                        <li>Speaker & microphone fixes</li>
-                        <li>Camera module replacement</li>
+                        <li>Modern, fast, responsive websites</li>
+                        <li>Full-stack web apps (React, Vite)</li>
+                        <li>SEO-friendly &amp; mobile-first builds</li>
+                        <li>Single-page and multi-page designs</li>
+                        <li>Performance &amp; accessibility focused</li>
                     </ul>
                 </div>
                 <div class="card">
+                    <span class="card-icon"><i class="ti ti-shopping-cart" aria-hidden="true"></i></span>
+                    <h3>E-Commerce &amp; Booking Systems</h3>
+                    <ul>
+                        <li>Online stores &amp; product catalogs</li>
+                        <li>Service-booking &amp; scheduling platforms</li>
+                        <li>Payment integration &amp; checkout</li>
+                        <li>Inventory &amp; order management</li>
+                        <li>Customer accounts &amp; notifications</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="card-icon"><i class="ti ti-layout-dashboard" aria-hidden="true"></i></span>
+                    <h3>Dashboards &amp; Business Tools</h3>
+                    <ul>
+                        <li>Admin panels &amp; internal dashboards</li>
+                        <li>Custom workflow automation</li>
+                        <li>Data management &amp; reporting</li>
+                        <li>Role-based access &amp; auth</li>
+                        <li>Integrations with your existing tools</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="card-icon"><i class="ti ti-cloud" aria-hidden="true"></i></span>
+                    <h3>Hosting, Domains &amp; Cloud</h3>
+                    <ul>
+                        <li>Domain registration &amp; DNS setup</li>
+                        <li>Cloud, Firebase &amp; GitHub Pages deployment</li>
+                        <li>Business email &amp; forwarding setup</li>
+                        <li>SSL, backups &amp; uptime monitoring</li>
+                        <li>Ongoing maintenance &amp; updates</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="card-icon"><i class="ti ti-palette" aria-hidden="true"></i></span>
+                    <h3>Branding &amp; Online Presence</h3>
+                    <ul>
+                        <li>Logo &amp; basic brand identity support</li>
+                        <li>Contact form &amp; lead capture integration</li>
+                        <li>Google Business &amp; maps setup</li>
+                        <li>Content layout &amp; copy guidance</li>
+                        <li>Analytics &amp; conversion tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ON-SITE IT & NETWORK SERVICES -->
+        <section class="service-section" id="services">
+            <div class="section-head">
+                <span class="eyebrow"><i class="ti ti-server-2" aria-hidden="true"></i> On-Site IT</span>
+                <h2>On-Site IT &amp; Network Services</h2>
+                <p>Serving data centers, retail chains, offices, and small businesses — as well as homes —
+                    throughout the New England region with reliable on-site IT support.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <span class="card-icon"><i class="ti ti-server-2" aria-hidden="true"></i></span>
                     <h3>Network Infrastructure</h3>
                     <ul>
-                        <li>Rack & stack: switches, firewalls, servers</li>
-                        <li>New hardware installation & setup</li>
+                        <li>Rack &amp; stack: switches, firewalls, servers</li>
+                        <li>New hardware installation &amp; setup</li>
                         <li>Decommissioning of old equipment</li>
                         <li>Move / Add / Change (MAC) work</li>
-                        <li>Network closet clean-up & optimization</li>
-                        <li>Labeling & full documentation photos</li>
+                        <li>Network closet clean-up &amp; optimization</li>
+                        <li>Labeling &amp; full documentation photos</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>WiFi Deployment & AP Services</h3>
+                    <span class="card-icon"><i class="ti ti-wifi" aria-hidden="true"></i></span>
+                    <h3>WiFi Deployment &amp; AP Services</h3>
                     <ul>
-                        <li>AP mounting & replacement</li>
+                        <li>AP mounting &amp; replacement</li>
                         <li>Controller-agnostic deployments</li>
                         <li>Cisco, Meraki, Mist AI, Aruba, Ubiquiti</li>
-                        <li>Coverage testing & optimization</li>
+                        <li>Coverage testing &amp; optimization</li>
                         <li>Small office, warehouse, and retail WiFi</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>Cabling & Low Voltage</h3>
+                    <span class="card-icon"><i class="ti ti-plug-connected" aria-hidden="true"></i></span>
+                    <h3>Cabling &amp; Low Voltage</h3>
                     <ul>
-                        <li>MDF/IDF cable runs & terminations</li>
-                        <li>Patch panel installs & expansions</li>
-                        <li>Cable dressing & routing</li>
+                        <li>MDF/IDF cable runs &amp; terminations</li>
+                        <li>Patch panel installs &amp; expansions</li>
+                        <li>Cable dressing &amp; routing</li>
                         <li>CAT5e / CAT6 / CAT6A termination</li>
-                        <li>Cable labeling & copper testing</li>
-                        <li>Fiber optic cable testing & cleaning</li>
+                        <li>Cable labeling &amp; copper testing</li>
+                        <li>Fiber optic cable testing &amp; cleaning</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>Desktop & Field Services</h3>
+                    <span class="card-icon"><i class="ti ti-device-desktop" aria-hidden="true"></i></span>
+                    <h3>Desktop &amp; Field Services</h3>
                     <ul>
                         <li>PC / laptop / monitor installation</li>
-                        <li>Imaging & migration support</li>
-                        <li>Printer setup & replacement</li>
-                        <li>POS & kiosk installations</li>
+                        <li>Imaging &amp; migration support</li>
+                        <li>Printer setup &amp; replacement</li>
+                        <li>POS &amp; kiosk installations</li>
                         <li>Basic troubleshooting</li>
                     </ul>
                 </div>
-                <!-- WEB SERVICES -->
                 <div class="card">
-                    <h3>Web & Online Presence Setup</h3>
+                    <span class="card-icon"><i class="ti ti-tool" aria-hidden="true"></i></span>
+                    <h3>Computer Repair &amp; Hardware</h3>
                     <ul>
-                        <li>Simple, fast-loading small business websites</li>
-                        <li>Static websites (HTML/CSS) or GitHub Pages deployment</li>
-                        <li>Custom one-page designs</li>
-                        <li>Contact form integration</li>
-                        <li>Domain setup & DNS configuration</li>
-                        <li>Basic business branding support</li>
+                        <li>Laptop screen replacement</li>
+                        <li>SSD / RAM upgrades</li>
+                        <li>Desktop hardware diagnostics</li>
+                        <li>Power supply &amp; motherboard repairs</li>
+                        <li>Overheating &amp; fan replacement</li>
+                        <li>General PC troubleshooting</li>
                     </ul>
                 </div>
-                <!-- custom pc -->
                 <div class="card">
-                    <h3 class="rgb-title">Custom PC Builds</h3>
+                    <span class="card-icon"><i class="ti ti-device-mobile" aria-hidden="true"></i></span>
+                    <h3>Mobile Phone Repair</h3>
+                    <ul>
+                        <li>iPhone &amp; Android screen replacement</li>
+                        <li>Battery replacement</li>
+                        <li>Charging port repair</li>
+                        <li>Speaker &amp; microphone fixes</li>
+                        <li>Camera module replacement</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="card-icon"><i class="ti ti-cpu" aria-hidden="true"></i></span>
+                    <h3>Custom PC Builds</h3>
                     <ul>
                         <li>Custom gaming, streaming, and workstation builds</li>
                         <li>Free, reliable part list consulting based on your budget</li>
                         <li>Can build with your own parts or recommended components</li>
-                        <li>Full assembly, cable management, BIOS & driver setup</li>
+                        <li>Full assembly, cable management, BIOS &amp; driver setup</li>
                         <li>OS installation and basic performance / stability checks</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>Remote Support & Monitoring</h3>
+                    <span class="card-icon"><i class="ti ti-headset" aria-hidden="true"></i></span>
+                    <h3>Remote Support &amp; Monitoring</h3>
                     <ul>
                         <li>Remote troubleshooting</li>
                         <li>Software installation</li>
-                        <li>Virus & malware cleanup</li>
+                        <li>Virus &amp; malware cleanup</li>
                         <li>Remote device management</li>
                         <li>Cloud backup setup</li>
                     </ul>
                 </div>
-
             </div>
         </section>
     </main>
     <footer>
-        © 2025 AliTech IT Services
+        &copy; <span id="year">2025</span> AliTech IT Services
     </footer>
     <script src="scripts/main.js" defer></script>
 </body>

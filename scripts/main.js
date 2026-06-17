@@ -1,4 +1,12 @@
 // ===============================
+// AUTO FOOTER YEAR
+// ===============================
+const yearEl = document.getElementById("year");
+if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+}
+
+// ===============================
 // MOBILE NAV MENU
 // ===============================
 const navToggle = document.getElementById("navToggle");
@@ -215,14 +223,6 @@ if (phoneInput) {
         }
 
         e.target.value = formatted;
-    });
-
-    // Backspace davranışını düzelt – mask karakterlerini temizlesin
-    phoneInput.addEventListener("keydown", (e) => {
-        if (e.key === "Backspace") {
-            const value = phoneInput.value.replace(/\D/g, "");
-            phoneInput.value = value.substring(0, value.length - 1);
-        }
     });
 }
 

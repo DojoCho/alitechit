@@ -35,10 +35,11 @@
 }
 
 .btn-primary:hover {
-    background: #16a34a;
-    border-color: #15803d;
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
     color: #ffffff;
     transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(45, 155, 138, .3);
 }
 .btn-sm {
     padding: 0.45rem 0.9rem !important;
@@ -71,15 +72,3 @@
     transform: translateY(-2px);
 }
 
-/* ============================
-   RGB GAMING TITLE
-   ============================ */
-
-.rgb-title {
-    background: linear-gradient(90deg, #ff0000, #ff8a00, #ffee00, #00ff6a, #00c8ff, #004bff, #b100ff);
-    -webkit-background-clip: text;
-    color: transparent;
-    font-weight: 800;
-    text-shadow: 0 0 4px rgba(0,0,0,.25);
-    display: inline-block;
-}

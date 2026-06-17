@@ -44,8 +44,9 @@ a.back {
 }
 
 a.back:hover {
-    background: #16a34a;
+    background: var(--accent-dark);
     color: white;
+    border-color: var(--accent-dark);
 }
 
 
@@ -69,8 +70,9 @@ a.back:hover {
 }
 
 .filter-btn:hover {
-    background: #16a34a;
+    background: var(--accent-dark);
     color: white;
+    border-color: var(--accent-dark);
 }
 
 
