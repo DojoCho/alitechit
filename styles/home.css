@@ -238,28 +238,38 @@
     margin-bottom: 1.5rem;
 }
 
-/* SERVICE CARD ICON + LAYOUT */
+/* SERVICE CARD: icon + title on one row, list below */
 .card {
     border-top: 3px solid var(--accent);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.9rem;
+    align-content: start;
 }
 
 .card-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     border-radius: 12px;
     background: var(--accent-light);
     color: var(--accent-dark);
-    font-size: 1.55rem;
-    margin-bottom: 0.85rem;
+    font-size: 1.45rem;
+    margin-bottom: 0;
 }
 
 .card h3 {
     font-size: 1.08rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0;
+    align-self: center;
     color: var(--text-main);
+}
+
+.card ul {
+    grid-column: 1 / -1;
+    margin-top: 0.95rem;
 }
 
 /* RESPONSIVE — tablet */
