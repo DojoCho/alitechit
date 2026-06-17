@@ -72,3 +72,31 @@
     transform: translateY(-2px);
 }
 
+/* ============================
+   RGB GAMING TITLE (Custom PC Builds)
+   ============================ */
+.rgb-title {
+    background: linear-gradient(90deg,
+        #ff0000, #ff8a00, #ffee00, #00ff6a, #00c8ff, #004bff, #b100ff, #ff0000);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 800;
+    display: inline-block;
+    animation: rgbShift 6s linear infinite;
+}
+
+@keyframes rgbShift {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rgb-title {
+        animation: none;
+    }
+}
+
