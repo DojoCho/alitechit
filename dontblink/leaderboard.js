@@ -14,8 +14,23 @@ import {
 
 const els = {
   top10List: document.getElementById("top10-list"),
-  myBest: document.getElementById("my-best-score")
+  myBest: document.getElementById("my-best-score"),
+  saveModal: document.getElementById("save-score-modal"),
+  saveScoreNum: document.getElementById("save-score-num")
 };
+
+// Score the player earned while signed out, kept until they sign in / guest
+let pendingScore = 0;
+
+function showSaveModal(score) {
+  pendingScore = Math.max(pendingScore, score);
+  if (els.saveScoreNum) els.saveScoreNum.textContent = pendingScore;
+  if (els.saveModal) els.saveModal.classList.remove("hidden");
+}
+
+function hideSaveModal() {
+  if (els.saveModal) els.saveModal.classList.add("hidden");
+}
 
 function renderTop10(rows) {
   if (!els.top10List) return;
@@ -25,6 +40,8 @@ function renderTop10(rows) {
     return;
   }
 
+  const medals = ["🥇", "🥈", "🥉"];
+
   els.top10List.innerHTML = rows
     .map((row, index) => {
       const avatar = row.avatarUrl
@@ -33,9 +50,11 @@ function renderTop10(rows) {
             .slice(0, 1)
             .toUpperCase()}</div>`;
 
+      const rankDisplay = index < 3 ? medals[index] : `#${index + 1}`;
+
       return `
         <div class="lb-row">
-          <div class="lb-rank">#${index + 1}</div>
+          <div class="lb-rank">${rankDisplay}</div>
           <div class="lb-avatar">${avatar}</div>
           <div class="lb-name">${row.displayName || "Player"}</div>
           <div class="lb-score">${row.bestScore ?? 0}</div>
@@ -71,13 +90,16 @@ export async function refreshTop10() {
 }
 
 export async function submitScore(score) {
+  const numericScore = Number(score) || 0;
   const user = auth.currentUser;
+
   if (!user) {
-    alert("Please sign in or continue as guest first.");
+    // Don't lose the score — remember it and ask the player to sign in / guest
+    if (numericScore > 0) showSaveModal(numericScore);
     return;
   }
 
-  const numericScore = Number(score) || 0;
+  hideSaveModal();
 
   const userRef = doc(db, "users", user.uid);
   const lbRef = doc(db, "leaderboard_entries", user.uid);
@@ -125,9 +147,39 @@ export async function submitScore(score) {
   await refreshTop10();
 }
 
+// Called after the player signs in / continues as guest — saves the score
+// they earned while signed out so it is never lost.
+export async function flushPendingScore() {
+  if (pendingScore > 0 && auth.currentUser) {
+    const score = pendingScore;
+    pendingScore = 0;
+    hideSaveModal();
+    await submitScore(score);
+  }
+}
+
+// Wire the save-score modal buttons to the existing auth handlers
+const saveGoogleBtn = document.getElementById("save-google");
+const saveGuestBtn = document.getElementById("save-guest");
+const saveDismissBtn = document.getElementById("save-dismiss");
+
+if (saveGoogleBtn) {
+  saveGoogleBtn.onclick = () => window.DontBlinkAuthUI?.handleGoogleLogin();
+}
+if (saveGuestBtn) {
+  saveGuestBtn.onclick = () => window.DontBlinkAuthUI?.handleGuestLogin();
+}
+if (saveDismissBtn) {
+  saveDismissBtn.onclick = () => {
+    pendingScore = 0;
+    hideSaveModal();
+  };
+}
+
 window.DontBlinkLeaderboard = {
   submitScore,
-  refreshTop10
+  refreshTop10,
+  flushPendingScore
 };
 
 window.addEventListener("load", async () => {

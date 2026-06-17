@@ -246,6 +246,11 @@ onAuthStateChanged(auth, async (user) => {
     if (window.DontBlinkLeaderboard?.refreshTop10) {
       await window.DontBlinkLeaderboard.refreshTop10();
     }
+
+    // If the player earned a score while signed out, save it now
+    if (window.DontBlinkLeaderboard?.flushPendingScore) {
+      await window.DontBlinkLeaderboard.flushPendingScore();
+    }
   } catch (err) {
     console.error("[Auth] onAuthStateChanged error:", err);
   }
