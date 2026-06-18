@@ -167,7 +167,14 @@ if (saveGoogleBtn) {
   saveGoogleBtn.onclick = () => window.DontBlinkAuthUI?.handleGoogleLogin();
 }
 if (saveGuestBtn) {
-  saveGuestBtn.onclick = () => window.DontBlinkAuthUI?.handleGuestLogin();
+  saveGuestBtn.onclick = () => {
+    hideSaveModal();
+    if (window.DontBlinkAuthUI?.openGuestNameModal) {
+      window.DontBlinkAuthUI.openGuestNameModal();
+    } else {
+      window.DontBlinkAuthUI?.handleGuestLogin("");
+    }
+  };
 }
 if (saveDismissBtn) {
   saveDismissBtn.onclick = () => {

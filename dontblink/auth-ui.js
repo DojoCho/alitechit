@@ -28,8 +28,12 @@ const els = {
   authStatus: document.getElementById("auth-status"),
   guestModal: document.getElementById("guest-name-modal"),
   guestInput: document.getElementById("guest-name-input"),
-  guestSave: document.getElementById("guest-name-save")
+  guestSave: document.getElementById("guest-name-save"),
+  guestSkip: document.getElementById("guest-name-skip")
 };
+
+// Name typed in the guest modal, applied when a new guest profile is created
+let pendingGuestName = "";
 
 function setStatus(text) {
   if (els.authStatus) els.authStatus.textContent = text;
@@ -69,7 +73,7 @@ async function ensureUserProfile(user) {
 
   const initialName =
     user.displayName ||
-    (user.isAnonymous ? makeGuestName() : "Player");
+    (user.isAnonymous ? (pendingGuestName || makeGuestName()) : "Player");
 
   const profile = {
     uid: user.uid,
@@ -153,7 +157,9 @@ async function handleGoogleLogin() {
   }
 }
 
-async function handleGuestLogin() {
+async function handleGuestLogin(customName) {
+  const name = (customName || "").trim().slice(0, 20);
+  pendingGuestName = name;
   try {
     setStatus("Continuing as guest...");
     console.log("[Auth] Guest login clicked");
@@ -162,12 +168,24 @@ async function handleGuestLogin() {
     const profile = await ensureUserProfile(result.user);
 
     window.currentDontBlinkUser = profile;
-    renderUser(profile);
+    if (name) {
+      await updateGuestName(name);
+    } else {
+      renderUser(profile);
+    }
+
+    // Save a score earned while signed out (now under the chosen name)
+    if (window.DontBlinkLeaderboard?.flushPendingScore) {
+      await window.DontBlinkLeaderboard.flushPendingScore();
+    }
+
     setStatus("Guest session started.");
     console.log("[Auth] Guest login success");
   } catch (err) {
     console.error("[Auth] Guest sign-in failed:", err);
     setStatus("Guest sign-in failed.");
+  } finally {
+    pendingGuestName = "";
   }
 }
 
@@ -184,17 +202,25 @@ async function handleLogout() {
 
 function openGuestNameModal(currentName = "") {
   if (!els.guestModal) return;
-  els.guestModal.style.display = "flex";
+  // hide the save-score prompt if it's open
+  const saveModal = document.getElementById("save-score-modal");
+  if (saveModal) saveModal.classList.add("hidden");
 
+  els.guestModal.classList.remove("hidden");
   if (els.guestInput) {
     els.guestInput.value = currentName;
-    els.guestInput.focus();
+    setTimeout(() => els.guestInput.focus(), 50);
   }
 }
 
 function closeGuestNameModal() {
-  if (!els.guestModal) return;
-  els.guestModal.style.display = "none";
+  if (els.guestModal) els.guestModal.classList.add("hidden");
+}
+
+function confirmGuestName() {
+  const name = els.guestInput ? els.guestInput.value : "";
+  closeGuestNameModal();
+  handleGuestLogin(name);
 }
 
 function bindAuthButtons() {
@@ -202,8 +228,9 @@ function bindAuthButtons() {
     els.googleBtn.onclick = handleGoogleLogin;
   }
 
+  // Continuing as guest now asks for a name first
   if (els.guestBtn) {
-    els.guestBtn.onclick = handleGuestLogin;
+    els.guestBtn.onclick = () => openGuestNameModal();
   }
 
   if (els.logoutBtn) {
@@ -212,11 +239,21 @@ function bindAuthButtons() {
   }
 
   if (els.guestSave) {
-    els.guestSave.onclick = async () => {
-      const newName = els.guestInput?.value || "";
-      await updateGuestName(newName);
+    els.guestSave.onclick = confirmGuestName;
+  }
+
+  if (els.guestSkip) {
+    // Skip → continue with an automatic random name
+    els.guestSkip.onclick = () => {
       closeGuestNameModal();
+      handleGuestLogin("");
     };
+  }
+
+  if (els.guestInput) {
+    els.guestInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") confirmGuestName();
+    });
   }
 
   if (els.guestModal) {
