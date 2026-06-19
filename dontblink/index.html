@@ -78,9 +78,32 @@
 		}
 
 		#status-progress {
-			bottom: 10%;
-			width: 50%;
+			bottom: 12%;
+			width: 240px;
+			max-width: 60%;
+			height: 8px;
 			margin: 0 auto;
+			border: 0;
+			border-radius: 6px;
+			overflow: hidden;
+			-webkit-appearance: none;
+			appearance: none;
+			background-color: #16233c;
+		}
+
+		#status-progress::-webkit-progress-bar {
+			background-color: #16233c;
+			border-radius: 6px;
+		}
+
+		#status-progress::-webkit-progress-value {
+			background-color: #27e0c8;
+			border-radius: 6px;
+		}
+
+		#status-progress::-moz-progress-bar {
+			background-color: #27e0c8;
+			border-radius: 6px;
 		}
 
 		#status-notice {
@@ -112,7 +135,7 @@
 	</noscript>
 
 	<div id="status">
-		<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="index.png?v=2" alt="">
+		<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="index.png?v=3" alt="">
 		<progress id="status-progress"></progress>
 		<div id="status-notice"></div>
 	</div>
