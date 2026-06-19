@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Don't Blink: Dark Runner</title>
+    <meta name="description"
+        content="Privacy policy for the Don't Blink: Dark Runner mobile game by AliTech IT." />
+    <style>
+        :root {
+            --bg: #0a1020;
+            --bg2: #0d1424;
+            --panel: #111b30;
+            --border: #1f3052;
+            --text: #d8e2f2;
+            --muted: #93a4c4;
+            --accent: #27e0c8;
+            --title: #b6f04a;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: radial-gradient(120% 80% at 50% 0%, #14223a 0%, var(--bg) 55%, #060a14 100%);
+            color: var(--text);
+            font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 22px 80px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .eye {
+            width: 26px;
+            height: 16px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, #6affe8 0%, #27e0c8 45%, #0c5c52 100%);
+            box-shadow: 0 0 14px rgba(39, 224, 200, 0.6);
+            position: relative;
+        }
+
+        .eye::after {
+            content: "";
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #06151a;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 6px 0 4px;
+            color: #fff;
+        }
+
+        .sub {
+            color: var(--muted);
+            margin: 0 0 28px;
+            font-size: 0.95rem;
+        }
+
+        .card {
+            background: linear-gradient(180deg, var(--panel), var(--bg2));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin-bottom: 18px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        h2 {
+            font-size: 1.18rem;
+            color: #fff;
+            margin: 4px 0 10px;
+        }
+
+        a { color: var(--accent); }
+
+        ul { padding-left: 20px; }
+
+        li { margin-bottom: 6px; }
+
+        .muted { color: var(--muted); }
+
+        code {
+            background: #0c1526;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 1px 6px;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-top: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="badge"><span class="eye"></span> DON'T BLINK · DARK RUNNER</div>
+        <h1>Privacy Policy</h1>
+        <p class="sub">Last updated: June 19, 2026</p>
+
+        <div class="card">
+            <p>This Privacy Policy explains how the mobile game <strong>Don't Blink: Dark Runner</strong>
+                (package <code>com.alitechit.games.dontblink</code>, the "Game"), published by
+                <strong>AliTech IT</strong> ("we", "us"), handles information. By playing the Game you
+                agree to this policy.</p>
+            <p class="muted">Short version: we don't ask for your email, password, or real identity. The
+                only data the Game stores is the nickname you choose for the leaderboard and your best
+                score.</p>
+        </div>
+
+        <div class="card">
+            <h2>Information we collect</h2>
+            <ul>
+                <li><strong>Display name (nickname):</strong> a name you type when you save a score. It is
+                    optional — if you skip it, a random name like "Wanderer123" is generated. Please do not
+                    enter real personal information as your nickname, since it is shown publicly on the
+                    leaderboard.</li>
+                <li><strong>Best score:</strong> your highest score, stored so it can appear on the global
+                    leaderboard.</li>
+                <li><strong>Anonymous game ID:</strong> when you first play, the Game signs in
+                    anonymously and receives a random anonymous identifier so your score can be linked to
+                    your device. This is <em>not</em> tied to your Google account, email, or real name.</li>
+            </ul>
+            <p>We do <strong>not</strong> collect your name, email address, phone number, precise location,
+                contacts, photos, or device advertising identifiers. The Game contains <strong>no ads</strong>
+                and <strong>no third-party analytics or tracking SDKs</strong>.</p>
+        </div>
+
+        <div class="card">
+            <h2>How we use the information</h2>
+            <ul>
+                <li>To display the global high-score leaderboard inside the Game.</li>
+                <li>To remember your best score and chosen nickname between sessions.</li>
+            </ul>
+            <p>We do not sell, rent, or share your information for advertising or marketing.</p>
+        </div>
+
+        <div class="card">
+            <h2>Service providers</h2>
+            <p>The leaderboard and anonymous sign-in are powered by <strong>Google Firebase</strong>
+                (Firebase Authentication and Cloud Firestore). The data described above is stored on
+                Google's servers on our behalf. Google's handling of this data is governed by the
+                <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">
+                    Firebase Privacy and Security</a> terms and the
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">
+                    Google Privacy Policy</a>.</p>
+        </div>
+
+        <div class="card">
+            <h2>Network access</h2>
+            <p>The Game requests Internet permission solely to sync scores with the leaderboard. No other
+                network activity takes place.</p>
+        </div>
+
+        <div class="card">
+            <h2>Data retention &amp; deletion</h2>
+            <p>Leaderboard entries are kept so the rankings remain available. If you would like your
+                nickname and score removed from the leaderboard, email us at the address below with a
+                description of your entry (e.g. your nickname and approximate score) and we will delete it.</p>
+        </div>
+
+        <div class="card">
+            <h2>Children's privacy</h2>
+            <p>The Game is suitable for a general audience and does not knowingly collect personal
+                information from children. Because the only stored values are a self-chosen nickname and a
+                score, no personal data needs to be provided to play.</p>
+        </div>
+
+        <div class="card">
+            <h2>Changes to this policy</h2>
+            <p>We may update this policy from time to time. Material changes will be reflected by updating
+                the "Last updated" date at the top of this page.</p>
+        </div>
+
+        <div class="card">
+            <h2>Contact</h2>
+            <p>Questions or deletion requests:<br>
+                <a href="mailto:aekremsan@gmail.com">aekremsan@gmail.com</a><br>
+                <a href="https://alitechit.com" target="_blank" rel="noopener">alitechit.com</a> — AliTech IT</p>
+        </div>
+
+        <footer>© 2026 AliTech IT · Don't Blink: Dark Runner</footer>
+    </div>
+</body>
+
+</html>
