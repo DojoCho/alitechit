@@ -44,30 +44,6 @@ https://alitechit.com
 
 ---
 
-## 🏡 Homyaid
-
-A marketplace platform connecting homeowners with trusted local professionals.
-
-### Features
-
-- User Authentication
-- Booking System
-- Provider Dashboard
-- Customer Dashboard
-- Google Maps Integration
-- Messaging
-- Ratings & Reviews
-- Responsive Design
-
-**Tech**
-
-- Angular
-- TypeScript
-- Firebase
-- Google Maps API
-
----
-
 ## 🎮 Don't Blink
 
 A browser-based reaction game built as an experimental project.
