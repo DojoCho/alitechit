@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.alitechit.rustraidcalc",
+      "sha256_cert_fingerprints": [
+        "97:8F:22:4B:C3:45:44:17:59:6A:44:B8:FD:9E:AB:23:AF:57:F9:FA:B6:A1:C3:68:49:21:71:94:DD:85:6D:22",
+        "B7:5E:36:84:44:89:F2:B9:D3:8E:76:74:A1:03:E0:51:31:EA:90:6C:2D:B6:0A:9F:AF:60:71:12:4C:2C:CD:49"
+      ]
+    }
+  }
+]
