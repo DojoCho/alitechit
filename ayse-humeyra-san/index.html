@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ayşe Hümeyra San — Psychologist &amp; Mental Health Counselor</title>
+    <meta name="description"
+        content="Ayşe Hümeyra San — Psychologist and Mental Health Counseling graduate student with 15 years of community-based social service experience in case management, substance-use support, and family programs. Bilingual (Turkish/English). Hingham, MA." />
+    <meta property="og:title" content="Ayşe Hümeyra San — Psychologist &amp; Mental Health Counselor" />
+    <meta property="og:description"
+        content="15 years of community-based case management, substance-use & recovery support, and family programming. Bilingual (Turkish/English). Hingham, MA." />
+    <meta property="og:type" content="profile" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f6f7f6;
+            --paper: #ffffff;
+            --ink: #1f2a28;
+            --muted: #5c6a67;
+            --soft: #7c8986;
+            --accent: #2f8f7f;
+            --accent-d: #226b5e;
+            --accent-l: #e8f2ef;
+            --line: #e4e8e6;
+            --band1: #1c4a43;
+            --band2: #2f8f7f;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .serif { font-family: "Fraunces", Georgia, serif; }
+
+        .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+        /* ---------- header band ---------- */
+        header.hero {
+            background: linear-gradient(135deg, var(--band1), var(--band2));
+            color: #fff;
+            padding: 54px 0 46px;
+        }
+
+        .hero-inner { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+
+        .mono {
+            width: 96px; height: 96px; flex: none; border-radius: 50%;
+            background: rgba(255, 255, 255, .14); border: 2px solid rgba(255, 255, 255, .35);
+            display: grid; place-items: center; font-family: "Fraunces", serif; font-size: 2rem;
+            font-weight: 600; letter-spacing: 1px;
+        }
+
+        .hero h1 { font-size: 2.6rem; font-weight: 600; letter-spacing: -.5px; line-height: 1.1; }
+        .hero .title { font-size: 1.16rem; font-weight: 600; color: #d9f0ea; margin-top: 6px; }
+        .hero .tag { color: #bfe0d8; font-size: .98rem; margin-top: 8px; max-width: 60ch; }
+
+        .contact-row { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font-size: .95rem; }
+        .contact-row a, .contact-row span { color: #eaf5f2; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
+        .contact-row a:hover { color: #fff; text-decoration: underline; }
+        .dot { width: 6px; height: 6px; border-radius: 50%; background: #7fc4b6; }
+
+        .btn-dl {
+            display: inline-flex; align-items: center; gap: 9px; margin-top: 22px;
+            background: #fff; color: var(--accent-d); font-weight: 700; font-size: .98rem;
+            padding: 11px 20px; border-radius: 10px; text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .18); transition: transform .12s;
+        }
+        .btn-dl:hover { transform: translateY(-2px); }
+
+        /* ---------- body grid ---------- */
+        main { padding: 40px 0 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; align-items: start; }
+
+        section { margin-bottom: 30px; }
+        h2 {
+            font-family: "Fraunces", serif; font-size: 1.28rem; font-weight: 600; color: var(--accent-d);
+            margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--accent-l);
+        }
+        aside h2 { font-size: 1.1rem; }
+
+        .lead { font-size: 1.05rem; color: #34433f; }
+
+        /* experience */
+        .job { margin-bottom: 22px; }
+        .job-h { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+        .job-role { font-weight: 700; font-size: 1.05rem; color: var(--ink); }
+        .job-date { color: var(--accent-d); font-weight: 600; font-size: .88rem; white-space: nowrap; }
+        .job-org { color: var(--muted); font-weight: 600; font-size: .95rem; margin-top: 1px; }
+        .job-meta { color: var(--soft); font-size: .85rem; font-style: italic; margin-bottom: 8px; }
+        .job ul { list-style: none; padding: 0; }
+        .job li { position: relative; padding-left: 20px; margin-bottom: 7px; color: #3c4744; font-size: .95rem; }
+        .job li::before { content: ""; position: absolute; left: 2px; top: 10px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
+        /* aside cards */
+        aside .card {
+            background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+            padding: 20px 22px; margin-bottom: 22px;
+        }
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .chip { background: var(--accent-l); color: var(--accent-d); font-size: .82rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; }
+
+        .edu { margin-bottom: 16px; }
+        .edu:last-child { margin-bottom: 0; }
+        .edu .deg { font-weight: 700; font-size: .98rem; }
+        .edu .sch { color: var(--muted); font-size: .9rem; }
+        .edu .yr { color: var(--accent-d); font-weight: 600; font-size: .82rem; }
+
+        .note { font-size: .88rem; color: var(--muted); margin-top: 10px; }
+
+        .tlist { list-style: none; padding: 0; }
+        .tlist li { padding-left: 18px; position: relative; margin-bottom: 8px; font-size: .92rem; color: #3c4744; }
+        .tlist li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); }
+        .tlist li span { display: block; color: var(--soft); font-size: .82rem; }
+
+        .lang-row { display: flex; justify-content: space-between; font-size: .95rem; margin-bottom: 8px; }
+        .lang-row b { font-weight: 600; }
+        .lang-row em { color: var(--soft); font-style: normal; font-size: .85rem; }
+
+        footer {
+            border-top: 1px solid var(--line); padding: 26px 0 40px; text-align: center;
+            color: var(--soft); font-size: .85rem;
+        }
+        footer a { color: var(--accent-d); text-decoration: none; font-weight: 600; }
+
+        @media (max-width: 780px) {
+            .grid { grid-template-columns: 1fr; gap: 8px; }
+            .hero h1 { font-size: 2.1rem; }
+            aside { order: 2; }
+            main .main-col { order: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="wrap hero-inner">
+            <div class="mono">AH</div>
+            <div>
+                <h1 class="serif">Ayşe Hümeyra San</h1>
+                <div class="title">Psychologist &amp; Mental Health Counselor</div>
+                <div class="tag">Community-based case management · Substance-use &amp; recovery support ·
+                    Family &amp; community programs · Bilingual (Turkish / English)</div>
+                <div class="contact-row">
+                    <span>📍 Hingham, MA</span>
+                    <a href="tel:+18572343665">📞 (857) 234-3665</a>
+                    <a href="mailto:a.humeyrasan@gmail.com">✉️ a.humeyrasan@gmail.com</a>
+                </div>
+                <a class="btn-dl" href="Ayse-Humeyra-San-Resume.pdf" target="_blank">⬇ Download Résumé (PDF)</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <div class="grid">
+            <!-- ASIDE -->
+            <aside>
+                <div class="card">
+                    <h2>Core Competencies</h2>
+                    <div class="chips">
+                        <span class="chip">Case Management &amp; Care Coordination</span>
+                        <span class="chip">Substance Use &amp; Recovery Support</span>
+                        <span class="chip">Resource Navigation &amp; Referral</span>
+                        <span class="chip">Crisis &amp; Grief Support</span>
+                        <span class="chip">Trauma-Informed Practice</span>
+                        <span class="chip">Family Systems &amp; Parent Coaching</span>
+                        <span class="chip">Community Outreach &amp; Program Coordination</span>
+                        <span class="chip">Psychoeducation &amp; Group Facilitation</span>
+                        <span class="chip">Developmental &amp; Psychosocial Assessment</span>
+                        <span class="chip">Confidential Case Records</span>
+                        <span class="chip">Interagency Collaboration</span>
+                        <span class="chip">Bilingual Service Delivery</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Education &amp; Credentials</h2>
+                    <div class="edu">
+                        <div class="deg">M.Ed. in Mental Health Counseling <em style="font-weight:500;color:var(--soft)">(in progress)</em></div>
+                        <div class="sch">Bay Path University — Boston, MA</div>
+                        <div class="yr">2023 – Present</div>
+                    </div>
+                    <div class="edu">
+                        <div class="deg">B.Ed. in Psychology</div>
+                        <div class="sch">Fatih University — Istanbul, Turkey</div>
+                        <div class="yr">2005 – 2010</div>
+                    </div>
+                    <p class="note">Pursuing clinical licensure in Massachusetts through current graduate
+                        program; willing to obtain LADC / LSW credentialing. Able to clear CORI and additional
+                        background checks.</p>
+                </div>
+
+                <div class="card">
+                    <h2>Training &amp; Certifications</h2>
+                    <ul class="tlist">
+                        <li>Family Counseling <span>Biruni University · 2021</span></li>
+                        <li>Solution-Focused Brief Therapy <span>KİM Psychology · 2019</span></li>
+                        <li>Psycho-Pedagogical Assessment of Preschool Children <span>Padem Psychology · 2013</span></li>
+                        <li>Denver II Developmental Assessment Test <span>Turkish Psychological Association · 2011</span></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>Languages</h2>
+                    <div class="lang-row"><b>Turkish</b><em>Native</em></div>
+                    <div class="lang-row"><b>English</b><em>Professional working proficiency</em></div>
+                </div>
+
+                <div class="card">
+                    <h2>References</h2>
+                    <p class="note" style="margin-top:0">Professional references available upon request.</p>
+                </div>
+            </aside>
+
+            <!-- MAIN -->
+            <div class="main-col">
+                <section>
+                    <h2>Professional Summary</h2>
+                    <p class="lead">Psychologist and Mental Health Counseling graduate student with 15 years
+                        of direct client-facing experience in community-based social service settings —
+                        including six years delivering government-funded psychosocial case management to
+                        families affected by substance use, bereavement, and poverty. Experienced in assessing
+                        family needs, connecting clients to health, educational, and social resources, and
+                        designing and coordinating community programming and family education. Trauma-informed,
+                        culturally responsive, and fluent in Turkish and English. Seeking to apply this
+                        background to coordinating mental health and Opioid Use Disorder services for Hingham
+                        residents.</p>
+                </section>
+
+                <section>
+                    <h2>Professional Experience</h2>
+
+                    <div class="job">
+                        <div class="job-h">
+                            <span class="job-role">Psychologist / Case Coordinator</span>
+                            <span class="job-date">2012 – 2018</span>
+                        </div>
+                        <div class="job-org">Bağcılar District Governorship — “Vefa-Yet” Project · Istanbul, Turkey</div>
+                        <div class="job-meta">Government-funded community social services program</div>
+                        <ul>
+                            <li>Carried an ongoing caseload of vulnerable households in a high-need urban
+                                district, providing psychosocial assessment, counseling, and case coordination
+                                to widowed women and their children.</li>
+                            <li>Worked directly with adolescents and young people involved in substance use, and
+                                with their mothers — delivering individual counseling, family sessions, and
+                                structured support to caregivers navigating a child's substance use.</li>
+                            <li>Supported women bereaved by a spouse's substance-related illness or death,
+                                addressing grief, stigma, family instability, and the long-term impact of a
+                                parent's substance use on children in the home.</li>
+                            <li>Connected families to district health, education, financial-aid, and social
+                                service resources, coordinating with schools, municipal offices, and community
+                                partners and following up on referrals.</li>
+                            <li>Designed and ran parent seminars, psychoeducation groups, and community events to
+                                reduce isolation, strengthen protective factors, and build family engagement
+                                with available services.</li>
+                            <li>Monitored children's school attendance and educational continuity, intervening
+                                early where family disruption or household substance use put schooling at risk.</li>
+                            <li>Conducted developmental screening of preschool-age children (ages 3–6) using the
+                                Denver II Developmental Assessment Test and referred for further evaluation as
+                                indicated.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-h">
+                            <span class="job-role">Psychologist / Counselor (Telehealth)</span>
+                            <span class="job-date">2018 – Present</span>
+                        </div>
+                        <div class="job-org">EvimdekiPsikolog · Remote</div>
+                        <div class="job-meta">Online counseling platform</div>
+                        <ul>
+                            <li>Completed 2,000+ individual and family counseling sessions with clients across
+                                the Turkish diaspora, including immigrant and refugee families adjusting to life
+                                in a new country.</li>
+                            <li>Provided solution-focused, short-term counseling for anxiety, depression, grief,
+                                parenting stress, and family conflict, including families coping with a member's
+                                addiction.</li>
+                            <li>Maintained confidential case notes, assessed risk, and referred clients to
+                                in-person and specialist services when a higher level of care was indicated.</li>
+                            <li>Delivered services entirely in a second language and cultural context, sustaining
+                                a consistent client base over eight years.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-h">
+                            <span class="job-role">Professional Aide</span>
+                            <span class="job-date">2022 – 2023</span>
+                        </div>
+                        <div class="job-org">Belmont Public Schools · Belmont, MA</div>
+                        <div class="job-meta">U.S. public school system</div>
+                        <ul>
+                            <li>Supported second-grade students requiring individualized attention, including
+                                children with behavioral and emotional needs, within a U.S. public education
+                                setting.</li>
+                            <li>Collaborated daily with classroom teachers, specialists, and families; gained
+                                direct working knowledge of U.S. school systems, mandated-reporting
+                                expectations, and student support structures.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-h">
+                            <span class="job-role">Psychologist</span>
+                            <span class="job-date">2011 – 2012</span>
+                        </div>
+                        <div class="job-org">Yaşam Işığı Private Special Education Center · Istanbul, Turkey</div>
+                        <ul>
+                            <li>Provided individual counseling and family support to children with developmental
+                                disabilities and their caregivers.</li>
+                            <li>Taught community integration and social-living skills; led parent and guardian
+                                training seminars.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-h">
+                            <span class="job-role">Psychologist</span>
+                            <span class="job-date">2010 – 2011</span>
+                        </div>
+                        <div class="job-org">Ana Şefkat Private Special Education Center · Istanbul, Turkey</div>
+                        <ul>
+                            <li>Delivered psychoeducation and social skills training for children with
+                                disabilities.</li>
+                            <li>Ran parent education seminars and provided ongoing emotional support to families.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Ayşe Hümeyra San · Hingham, MA &nbsp;·&nbsp;
+        Website by <a href="https://alitechit.com/cv" target="_blank">AliTechIT</a>
+    </footer>
+</body>
+
+</html>
