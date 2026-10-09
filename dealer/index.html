@@ -42,7 +42,15 @@
   .bar button { font:inherit; border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:8px; padding:8px 14px; cursor:pointer; }
   .bar button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
   .saved { font-size:12px; color:var(--muted); min-width:70px; }
+  .tabs { display:flex; gap:6px; position:sticky; top:0; z-index:5; background:var(--bg); padding:8px 0; margin-bottom:4px; }
+  .tabs a { flex:1; text-align:center; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:10px; padding:9px 6px; font-weight:600; font-size:14px; }
+  .tabs a.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .guide ul { margin:0; padding-left:20px; } .guide li { margin:5px 0; } .guide ul ul { margin-top:4px; }
+  .guide a { color:var(--accent); }
+  .warn { border-color:var(--bad); } .warn h2 { color:var(--bad); } .warn p { margin:0; font-weight:600; }
+  body.guide-on .bar { display:none; }
   @media print {
+    .tabs { display:none; }
     :root { --bg:#fff; --card:#fff; --ink:#000; --muted:#333; --line:#999; }
     .bar { display:none; } .wrap { padding:0; } .card { break-inside:avoid; border-radius:0; }
     textarea { min-height:0; }
@@ -51,6 +59,102 @@
 </head>
 <body>
 <div class="wrap">
+  <nav class="tabs">
+    <a href="#form" data-tab="form">📝 Questions</a>
+    <a href="#guide" data-tab="guide">🔍 Inspection Guide</a>
+  </nav>
+
+  <div id="tab-guide" class="tab" hidden>
+  <header>
+    <h1>Kontrol Rehberi</h1>
+    <p>Bayide sırayla yap. Telefon şarjlı olsun, fener lazım olacak.</p>
+  </header>
+
+  <section class="card guide">
+    <h2>1 · Motor soğukken (vardığında İLK iş)</h2>
+    <ul>
+      <li>"Has it been started today?" diye sor. <b>Motor soğukken</b> çalıştırılsın.</li>
+      <li>Kontağı açınca uyarı ışıkları yanıp birkaç saniyede sönmeli.</li>
+      <li><b>Egzozdan duman:</b> Mavi duman yağ yakıyor demek, kötü. Beyaz ince buhar normal.</li>
+      <li><b>Tıkırtı veya takırtı</b> dinle. Rölantide titreme olmamalı.</li>
+    </ul>
+  </section>
+
+  <section class="card guide">
+    <h2>2 · Kaput altı (motor kapalıyken)</h2>
+    <ul>
+      <li>Fenerle motorun etrafına ve altına bak. <b>Islak yağ izi veya kir birikmesi</b> olmamalı.</li>
+      <li>Soğutma suyu: seviye MIN–MAX arasında, sıvı pembe veya mavi ve temiz.</li>
+      <li><b>Yağ seviyesi:</b> Yağ çubuğu yok. Ekrandan bak: Settings → My Car → Oil Level.</li>
+    </ul>
+  </section>
+
+  <section class="card guide">
+    <h2>3 · Dış görünüş (5 dk)</h2>
+    <ul>
+      <li>Paneller arası boşluklar eşit mi? Renk tonu farkı var mı? (boya izi)</li>
+      <li><b>Araç düz duruyor mu?</b> Çökük köşe varsa havalı süspansiyon sorunu olabilir.</li>
+      <li><b>Lastikler:</b> Eski 2 lastiğin diş derinliği (penny test). İç kenarda aşınma varsa rot ayarı bozuk.</li>
+      <li>Camlarda çatlak, farlarda buğu var mı?</li>
+    </ul>
+  </section>
+
+  <section class="card guide">
+    <h2>4 · İç mekân</h2>
+    <ul>
+      <li><b>Ekran:</b> Navigasyon, geri vites kamerası, Bluetooth, CarPlay. Donuyor mu?</li>
+      <li><b>Koltuklar:</b> Isıtma, soğutma, elektrikli ayarlar.</li>
+      <li><b>Klima:</b> Ön ve arka, sıcak ve soğuk.</li>
+      <li>Panoramik tavan ve perdesini aç-kapa. Tavanda ıslaklık veya leke var mı?</li>
+      <li>Elektrikli bagaj kapağı ve 3. sıra koltukların katlanması.</li>
+      <li><b>Kaç anahtar var?</b></li>
+    </ul>
+  </section>
+
+  <section class="card guide">
+    <h2>5 · Test sürüşü (en az 20 dk)</h2>
+    <ul>
+      <li><b>Radyoyu kapat.</b></li>
+      <li><b>Şehir içi:</b> Dur-kalkta vites geçişleri yumuşak mı? Vuruntu veya gecikme olmamalı.</li>
+      <li><b>Tümsek veya bozuk yol:</b> Süspansiyondan "klonk" sesi gelmemeli.</li>
+      <li><b>Otoyol (60–70 mph):</b>
+        <ul>
+          <li>Direksiyonu hafif bırak, araç bir tarafa çekmemeli.</li>
+          <li>Gaza sert bas: <b>ıslık veya tırlama sesi</b> olmamalı, güç kesilmemeli.</li>
+          <li>Fren yap: direksiyonda veya pedalda titreme olmamalı.</li>
+        </ul>
+      </li>
+      <li><b>Park manevrası:</b> Direksiyonu sonuna kadar çevir, gıcırtı veya tıkırtı olmamalı.</li>
+    </ul>
+  </section>
+
+  <section class="card guide">
+    <h2>6 · Sürüş sonrası</h2>
+    <ul>
+      <li>Kaputu aç: <b>yanık yağ kokusu</b> veya duman var mı?</li>
+      <li>Ekranda yeni bir uyarı çıktı mı?</li>
+      <li>Aracın altında damla var mı?</li>
+    </ul>
+  </section>
+
+  <section class="card guide">
+    <h2>7 · Masada</h2>
+    <ul>
+      <li><a href="#form">Questions</a> sekmesindeki soruları sor, cevapları oraya yaz.</li>
+      <li><b>Out-the-door fiyatı yazılı iste</b> (buyer's order).</li>
+      <li>Camdaki <b>Buyers Guide</b> etiketinin fotoğrafını çek.</li>
+      <li>"Can I take it to my mechanic?" diye sor.</li>
+      <li><b>O gün imza atma.</b> "I'll think about it tonight."</li>
+    </ul>
+  </section>
+
+  <section class="card guide warn">
+    <h2>⚠️ Hemen vazgeç</h2>
+    <p>Mavi duman · vites vuruntusu · çökük süspansiyon · yanan uyarı ışığı · bağımsız tamirci kontrolüne izin vermemeleri</p>
+  </section>
+  </div>
+
+  <div id="tab-form" class="tab">
   <header>
     <h1>Used Vehicle Questions</h1>
     <p>Notes save automatically on this device. Nothing is sent anywhere.</p>
@@ -92,6 +196,7 @@
     <h2>Notes</h2>
     <textarea data-k="notes" style="min-height:120px" placeholder="Anything else: promises made, things to follow up on…"></textarea>
   </section>
+  </div>
 </div>
 
 <div class="bar">
@@ -172,6 +277,23 @@ document.addEventListener('input', e => {
     catch (err) { saved.textContent = 'Not saved'; }
   }, 300);
 });
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href="#form"], a[href="#guide"]');
+  if (!a) return;
+  e.preventDefault();
+  const t = a.getAttribute('href').slice(1);
+  try { history.replaceState(null, '', '#' + t); } catch (err) {}
+  showTab(t);
+});
+function showTab(tab) {
+  const t = tab || (location.hash === '#guide' ? 'guide' : 'form');
+  document.querySelectorAll('.tab').forEach(d => d.hidden = d.id !== 'tab-' + t);
+  document.querySelectorAll('.tabs a').forEach(a => a.classList.toggle('on', a.dataset.tab === t));
+  document.body.classList.toggle('guide-on', t === 'guide');
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', () => showTab());
+showTab();
 document.getElementById('reset').onclick = () => {
   if (!confirm('Clear all notes on this device?')) return;
   try { localStorage.removeItem(KEY); } catch (e) {}
