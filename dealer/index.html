@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Dealer Visit Notes</title>
+<link rel="icon" href="/fav/favicon.ico">
+<style>
+  :root { --bg:#f5f6f8; --card:#fff; --ink:#111; --muted:#5b6170; --line:#d6d9df; --accent:#1f5eff; --ok:#16a34a; --bad:#dc2626; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0f1115; --card:#181b22; --ink:#eceef2; --muted:#9aa1ad; --line:#2c313b; --accent:#6b94ff; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  .wrap { max-width:820px; margin:0 auto; padding:16px 16px 90px; }
+  header h1 { font-size:20px; margin:4px 0 2px; }
+  header p { margin:0 0 12px; color:var(--muted); font-size:13px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; margin:12px 0; }
+  .card h2 { font-size:15px; margin:0 0 10px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  @media (max-width:560px) { .grid { grid-template-columns:1fr; } }
+  label.f { display:block; font-size:12px; color:var(--muted); }
+  input[type=text], textarea { width:100%; font:inherit; color:var(--ink); background:transparent; border:1px solid var(--line); border-radius:8px; padding:8px 10px; margin-top:3px; }
+  textarea { min-height:44px; resize:vertical; }
+  input:focus, textarea:focus { outline:2px solid var(--accent); outline-offset:-1px; }
+  .q { padding:10px 0; border-top:1px solid var(--line); }
+  .q:first-of-type { border-top:0; padding-top:0; }
+  .q .t { font-weight:600; margin-bottom:6px; }
+  .q .t small { font-weight:400; color:var(--muted); }
+  .opts { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px; }
+  .opts label { border:1px solid var(--line); border-radius:999px; padding:5px 12px; cursor:pointer; font-size:14px; user-select:none; }
+  .opts input { display:none; }
+  .opts input:checked + span { font-weight:700; color:var(--accent); }
+  .opts label:has(input:checked) { border-color:var(--accent); }
+  .check { display:flex; align-items:center; gap:10px; padding:8px 0; border-top:1px solid var(--line); }
+  .check:first-of-type { border-top:0; }
+  .check .name { flex:1; }
+  .check .opts { margin:0; }
+  .ok:has(input:checked) { border-color:var(--ok) !important; } .ok input:checked + span { color:var(--ok) !important; }
+  .bad:has(input:checked) { border-color:var(--bad) !important; } .bad input:checked + span { color:var(--bad) !important; }
+  .total input { font-weight:700; font-size:17px; }
+  .bar { position:fixed; left:0; right:0; bottom:0; background:var(--card); border-top:1px solid var(--line); padding:10px 16px; display:flex; gap:8px; justify-content:center; align-items:center; }
+  .bar button { font:inherit; border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:8px; padding:8px 14px; cursor:pointer; }
+  .bar button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .saved { font-size:12px; color:var(--muted); min-width:70px; }
+  @media print {
+    :root { --bg:#fff; --card:#fff; --ink:#000; --muted:#333; --line:#999; }
+    .bar { display:none; } .wrap { padding:0; } .card { break-inside:avoid; border-radius:0; }
+    textarea { min-height:0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Used Vehicle Questions</h1>
+    <p>Notes save automatically on this device. Nothing is sent anywhere.</p>
+  </header>
+
+  <section class="card">
+    <h2>Vehicle</h2>
+    <div class="grid">
+      <label class="f">Vehicle<input type="text" data-k="v_name" value="2021 Volvo XC90 T6 Inscription"></label>
+      <label class="f">Dealer<input type="text" data-k="v_dealer" value="Herb Chambers Lexus of Hingham"></label>
+      <label class="f">VIN<input type="text" data-k="v_vin" value="YV4A22PL2M1708063"></label>
+      <label class="f">Stock #<input type="text" data-k="v_stock" value="HLHTM1708063"></label>
+      <label class="f">Listed price<input type="text" data-k="v_price" value="$17,288 + $499 doc fee"></label>
+      <label class="f">Current odometer<input type="text" data-k="v_odo"></label>
+      <label class="f">Salesperson<input type="text" data-k="v_sales"></label>
+      <label class="f">Date<input type="text" data-k="v_date"></label>
+    </div>
+  </section>
+
+  <section class="card" id="history"><h2>1 · History</h2></section>
+  <section class="card" id="mech"><h2>2 · Mechanical</h2></section>
+
+  <section class="card">
+    <h2>3 · Price (out-the-door)</h2>
+    <div class="grid">
+      <label class="f">Vehicle price<input type="text" data-k="p_price"></label>
+      <label class="f">Doc fee<input type="text" data-k="p_doc"></label>
+      <label class="f">Sales tax (6.25%)<input type="text" data-k="p_tax"></label>
+      <label class="f">Title / registration<input type="text" data-k="p_reg"></label>
+      <label class="f">Other fees / add-ons<input type="text" data-k="p_other"></label>
+      <label class="f total">OUT-THE-DOOR TOTAL<input type="text" data-k="p_otd"></label>
+    </div>
+  </section>
+
+  <section class="card" id="terms"><h2>4 · Terms</h2></section>
+  <section class="card" id="drive"><h2>5 · Test drive</h2></section>
+
+  <section class="card">
+    <h2>Notes</h2>
+    <textarea data-k="notes" style="min-height:120px" placeholder="Anything else: promises made, things to follow up on…"></textarea>
+  </section>
+</div>
+
+<div class="bar">
+  <span class="saved" id="saved"></span>
+  <button type="button" id="reset">Clear</button>
+  <button type="button" class="primary" onclick="window.print()">Print / PDF</button>
+</div>
+
+<script>
+const YN = ['Yes','No'], YNU = ['Yes','No','Unknown'];
+const Q = {
+  history: [
+    ['h1','Previous owner kept it ~2 months / ~500 miles. How did you acquire it (trade-in, auction)? Why was it sold?'],
+    ['h2','Listing says "AutoCheck One Owner" but Carfax shows 3 owners. Which is correct?'],
+    ['h3','125,928 mi on 07/25 → 128,124 mi on 08/21. Why ~2,200 miles while in inventory (loaner, demo)?'],
+    ['h4','Any service records for the 99k–119k gap (no oil changes reported)?'],
+    ['h5','Any accidents, paintwork or body repair not on Carfax?', YN],
+  ],
+  mech: [
+    ['m1','Timing belt ever replaced? Can it be done before sale?', YNU],
+    ['m2','Transmission fluid ever changed?', YNU],
+    ['m3','Spark plugs last replaced when? <small>(Carfax: 60k)</small>'],
+    ['m4','Oil leaks or oil consumption found in inspection?', YN],
+    ['m5','Air suspension or standard? Any faults?', ['Air','Standard']],
+    ['m6','Fault codes / warning lights? Software (infotainment, start/stop) up to date?'],
+    ['m7','Open recalls?', YN],
+    ['m8','Copy of multi-point inspection + $1,700 repair order?', ['Received','Not given']],
+  ],
+  terms: [
+    ['t1','Can I take it to an independent mechanic (before buying or in the 5-day window)?', YN],
+    ['t2','5-day money back: mileage limit, fees, are taxes refunded?'],
+    ['t3','Warranty included? Extended warranty price / term / deductible / coverage?'],
+    ['t4','How many keys?'],
+    ['t5','Anything promised ("We Owe") written into the contract?', YN],
+  ],
+};
+const DRIVE = [
+  ['d1','Cold start — no smoke / ticking'],
+  ['d2','Transmission shifts smoothly'],
+  ['d3','No whine / rattle accelerating (supercharger/turbo)'],
+  ['d4','Brakes — no vibration or noise'],
+  ['d5','Suspension — no clunks, sits level'],
+  ['d6','Infotainment / cameras / Bluetooth'],
+  ['d7','Heated & cooled seats, climate, rear A/C'],
+  ['d8','Pano roof, power liftgate, 3rd row'],
+  ['d9','No warning lights, oil level OK'],
+  ['d10','Tire tread on the 2 older tires'],
+];
+const esc = s => s.replace(/"/g,'&quot;');
+const radios = (k, opts, cls=()=> '') => '<div class="opts">' + opts.map(o =>
+  `<label class="${cls(o)}"><input type="radio" name="${k}" data-k="${k}" value="${esc(o)}"><span>${o}</span></label>`).join('') + '</div>';
+for (const [sec, items] of Object.entries(Q)) {
+  document.getElementById(sec).insertAdjacentHTML('beforeend', items.map(([k,t,o]) =>
+    `<div class="q"><div class="t">${t}</div>${o ? radios(k+'_c', o) : ''}<textarea data-k="${k}" rows="1" placeholder="Answer"></textarea></div>`).join(''));
+}
+document.getElementById('drive').insertAdjacentHTML('beforeend', DRIVE.map(([k,t]) =>
+  `<div class="check"><span class="name">${t}</span>${radios(k, ['OK','Issue'], o => o==='OK'?'ok':'bad')}</div>`).join('') +
+  '<textarea data-k="d_notes" placeholder="Test drive notes" style="margin-top:8px"></textarea>');
+
+const KEY = 'dealer-notes-v1';
+let data = {};
+try { data = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+const fields = document.querySelectorAll('[data-k]');
+fields.forEach(el => {
+  const k = el.dataset.k;
+  if (el.type === 'radio') { if (data[k] === el.value) el.checked = true; }
+  else if (k in data) el.value = data[k];
+  else if (k === 'v_date' && !el.value) el.value = new Date().toLocaleDateString();
+});
+let timer;
+const saved = document.getElementById('saved');
+document.addEventListener('input', e => {
+  const el = e.target; if (!el.dataset || !el.dataset.k) return;
+  data[el.dataset.k] = el.value;
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    try { localStorage.setItem(KEY, JSON.stringify(data)); saved.textContent = 'Saved ✓'; }
+    catch (err) { saved.textContent = 'Not saved'; }
+  }, 300);
+});
+document.getElementById('reset').onclick = () => {
+  if (!confirm('Clear all notes on this device?')) return;
+  try { localStorage.removeItem(KEY); } catch (e) {}
+  location.reload();
+};
+</script>
+</body>
+</html>
