@@ -1,159 +1,330 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Privacy Policy — TowerRift</title>
-    <meta name="description" content="Privacy policy for the TowerRift mobile game by AliTechIT." />
-    <style>
-        :root {
-            --bg: #080b14;
-            --panel: #111827;
-            --border: #24365c;
-            --text: #dbe4f5;
-            --muted: #94a3c4;
-            --accent: #59c7ff;
-            --gold: #ffd24d;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            margin: 0;
-            background: radial-gradient(120% 80% at 50% 0%, #17233d 0%, var(--bg) 55%, #05070d 100%);
-            color: var(--text);
-            font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.65;
-            min-height: 100vh;
-        }
-
-        .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 80px; }
-
-        .badge {
-            display: inline-flex; align-items: center; gap: 10px;
-            font-weight: 700; letter-spacing: .5px; color: var(--accent); margin-bottom: 8px;
-        }
-
-        .crystal {
-            width: 18px; height: 24px;
-            background: linear-gradient(180deg, #8fe3ff 0%, #2f9fe0 50%, #1b4f7a 100%);
-            clip-path: polygon(50% 0, 100% 35%, 50% 100%, 0 35%);
-            box-shadow: 0 0 16px rgba(89, 199, 255, .55);
-        }
-
-        h1 { font-size: 2rem; margin: .2em 0 .1em; }
-        h2 { font-size: 1.15rem; margin: 2em 0 .4em; color: var(--accent); }
-        .updated { color: var(--muted); font-size: .92rem; margin-bottom: 2em; }
-
-        .card {
-            background: var(--panel); border: 1px solid var(--border);
-            border-radius: 14px; padding: 18px 20px; margin: 18px 0;
-        }
-
-        .headline { border-color: #2f6f4f; background: #10221a; }
-        .headline strong { color: #6fe3a0; }
-
-        ul { padding-left: 1.2em; }
-        li { margin: .35em 0; }
-        a { color: var(--accent); }
-
-        footer {
-            margin-top: 3em; padding-top: 1.4em; border-top: 1px solid var(--border);
-            color: var(--muted); font-size: .9rem;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TowerRift — Privacy Policy</title>
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#0d1017;--fg:#e8ecf4;--mut:#99a3b7;--acc:#e8c76a;--line:#232a39;
+ --chip:#161b26}
+@media(prefers-color-scheme:light){:root{--bg:#fbfbfd;--fg:#1a1d26;
+ --mut:#5a6070;--acc:#8a6d1f;--line:#e3e6ed;--chip:#f0f2f6}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+ font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+ padding:0 16px 80px}
+main{max-width:740px;margin:0 auto}
+header{max-width:740px;margin:0 auto;padding:22px 0 6px;display:flex;
+ align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-weight:700;letter-spacing:.3px}
+.brand span{color:var(--mut);font-weight:400}
+.switch{display:inline-flex;border:1px solid var(--line);border-radius:999px;
+ overflow:hidden;background:var(--chip)}
+.switch button{appearance:none;border:0;background:transparent;color:var(--mut);
+ font:600 13px/1 inherit;letter-spacing:.6px;padding:9px 16px;cursor:pointer}
+.switch button[aria-pressed="true"]{background:var(--acc);color:#15171d}
+h1{font-size:29px;line-height:1.25;margin:18px 0 4px}
+.sub{color:var(--mut);margin:0 0 18px}
+h2{font-size:20px;margin:32px 0 10px;padding-top:14px;
+ border-top:1px solid var(--line)}
+h3{font-size:16px;margin:20px 0 6px;color:var(--acc)}
+p{margin:10px 0}
+code{background:rgba(127,127,127,.16);padding:1px 5px;border-radius:4px;
+ font-size:14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;
+ vertical-align:top}
+th{background:rgba(127,127,127,.10);font-weight:600}
+ul{margin:10px 0;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--acc)}
+.foot{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);
+ color:var(--mut);font-size:14px;text-align:center}
+[hidden]{display:none}
+@media(max-width:560px){body{padding:0 14px 60px}h1{font-size:24px}
+ table,th,td{font-size:14px}}
+</style>
 </head>
-
 <body>
-    <div class="wrap">
-        <div class="badge"><span class="crystal"></span> ALITECHIT</div>
-        <h1>TowerRift — Privacy Policy</h1>
-        <p class="updated">Last updated: 14 September 2026</p>
+<header>
+  <div class="brand">TowerRift <span>· AliTechIT</span></div>
+  <div class="switch" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="true">EN</button>
+    <button type="button" data-set="tr" aria-pressed="false">TR</button>
+  </div>
+</header>
+<main>
+<div data-lang="en">
+<h1>Privacy Policy</h1>
+<p class="sub">Effective 28 September 2026 &middot; Controller: Ali Ekrem San
+(AliTechIT) &middot; <a href="mailto:info@alitechit.com">info@alitechit.com</a></p>
 
-        <div class="card headline">
-            <strong>This version of TowerRift does not collect any personal data.</strong>
-            It has no accounts, no analytics, no advertising and no tracking, and it sends nothing
-            from your device to us or to anyone else.
-        </div>
+<p>TowerRift records <strong>how the game is played</strong>, not
+<strong>who you are</strong>. Everything collected is there to tune the
+balance and to give you your account back if you lose your phone. There are
+no ad networks, no data sales and no third-party tracking.</p>
 
-        <div class="card">
-            <strong>What is coming.</strong> Sign-in with Google Play Games and with Apple, cloud
-            saves and online play are all planned, and the Apple App Store release is close behind
-            the Google Play one. Those versions <em>will</em> handle account data. This page
-            describes the version you can install today; it will be rewritten, and the change
-            described here, <em>before</em> any version that collects data is released.
-        </div>
+<h2>1. What is collected</h2>
 
-        <h2>What is stored, and where</h2>
-        <p>
-            Your progress — chapters cleared, talents bought, currency, settings — is written to a
-            save file in the app's own private storage on your device. It never leaves the phone.
-            Nobody, including us, can read it remotely.
-        </p>
-        <p>
-            The game also generates a random identifier for a future cloud-save feature. It is
-            created on your device, stored beside the save file, and is not transmitted anywhere
-            today.
-        </p>
+<h3>1.1 Your account</h3>
+<table>
+<tr><th>Data</th><th>Why</th><th>Where from</th></tr>
+<tr><td>Account id (a UUID the game generates)</td><td>The account itself</td>
+ <td>Made on the device</td></tr>
+<tr><td>Player name and tag</td><td>Friends list, standings</td>
+ <td>You type it</td></tr>
+<tr><td>Google account identifier</td>
+ <td>Getting the account back on a new phone</td>
+ <td>Only if you choose to link Google</td></tr>
+<tr><td>Apple account identifier</td><td>The same, on iPhone</td>
+ <td>Only if you choose Sign in with Apple</td></tr>
+<tr><td>Progress: chapters, trophies, gold, cosmetics</td><td>Cloud save</td>
+ <td>While you play</td></tr>
+</table>
+<p><strong>Sign in with Apple is asked for neither your name nor your
+e-mail address.</strong> The game uses neither, and a permission that will
+not be used is a permission that needs explaining.</p>
+<p><strong>If you link Google, your e-mail address and profile picture are
+not kept.</strong> Google's identity token carries them; the server deletes
+both immediately after linking. What remains is the identifier that lets us
+recognise you.</p>
 
-        <h2>Permissions</h2>
-        <ul>
-            <li><strong>Vibration</strong> — used for haptic feedback during battles. You can turn
-                it off in the in-game settings.</li>
-            <li><strong>Internet</strong> — declared for online features that are planned but not
-                yet built. The current version makes no network requests at all.</li>
-        </ul>
+<h3>1.2 Gameplay statistics</h3>
+<p>When a run finishes, this is recorded:</p>
+<ul>
+<li>which mode and which chapter</li>
+<li>the wave it ended on, and whether it was cleared</li>
+<li>core health after each wave</li>
+<li>how many towers were built and the highest level reached</li>
+<li>gold held and gold spent on talents</li>
+<li>how many enemies leaked</li>
+<li>the build version</li>
+</ul>
+<p><strong>Not sent:</strong> your name, your tag, your messages, your
+friends list, your location, your device model, any advertising identifier,
+or a record of your IP address. The row carries no identifier of its own
+&mdash; the server already knows the session the request came from.</p>
+<p><strong>You are asked on first launch and nothing is recorded until you
+answer.</strong> No is an answer too: the question is not asked again. You
+can change your mind later under <strong>Settings &rarr; Data &rarr; Gameplay
+statistics</strong>. Turning it off stops new rows and deletes the ones
+waiting on your phone.</p>
 
-        <h2>Purchases</h2>
-        <p>
-            In-app purchases are handled entirely by Google Play. Payment details are never seen,
-            processed or stored by us. Google's own privacy policy governs that transaction.
-        </p>
+<h3>1.3 What is never collected</h3>
+<p>Advertising identifiers, location, contacts, photos, microphone, device
+model or operating system version, browsing history, and payment details
+&mdash; purchases go through Google Play or the App Store and card
+information never reaches us.</p>
 
-        <h2>Signing in</h2>
-        <p>
-            Today there is nothing to sign in to. When sign-in arrives, linking a Google or Apple
-            account will be optional and will exist for one purpose: carrying your progress between
-            devices and between Android and iOS. The plan is to store the account identifier the
-            platform gives us and your game progress — not your name, email, contacts or friends
-            list. When it ships, this section will say exactly what is stored rather than what is
-            planned.
-        </p>
+<h2>2. How long it is kept</h2>
+<table>
+<tr><th>Data</th><th>Retention</th></tr>
+<tr><td>Account and progress</td><td>Until the account is deleted</td></tr>
+<tr><td>Gameplay statistics &mdash; raw row on the server</td>
+ <td><strong>60 days</strong></td></tr>
+<tr><td>Gameplay statistics &mdash; daily summary</td>
+ <td>Indefinitely, with no identifier: day, chapter, numbers</td></tr>
+<tr><td>Gameplay statistics &mdash; local archive</td>
+ <td>Indefinitely, <strong>with no identifier</strong></td></tr>
+</table>
+<p>When a raw row is deleted, the only link between it and an account goes
+with it. The summary that remains does not say who you are.</p>
+<p><strong>The local archive.</strong> Raw rows are copied to the
+developer's own machine before the server deletes them, because a deleted
+row is a question that can never be asked again. <strong>The account id does
+not travel with them</strong>: the copied row says what happened in a run,
+not who played it. A row in the archive therefore cannot be tied to a
+player, and a deletion request leaves nothing there to delete.</p>
 
-        <h2>Children</h2>
-        <p>
-            TowerRift is rated for ages 12 and over and is not directed at children under 13. We do
-            not knowingly collect information from anyone, of any age.
-        </p>
+<h2>3. Where it is stored</h2>
+<p>The server runs on Oracle Cloud in Frankfurt, Germany, using Nakama and
+PostgreSQL. Connections are over HTTPS. The admin console is closed to the
+internet and reachable only through an SSH tunnel.</p>
 
-        <h2>Third parties</h2>
-        <p>
-            The game ships with no third-party SDKs — no ad networks, no analytics providers, no
-            social integrations. Nothing is shared with anyone, because nothing is collected.
-        </p>
+<h2>4. Who it is shared with</h2>
+<p><strong>Nobody.</strong> There is no ad network, no analytics SDK and no
+data broker. Your data is not sold. The one exception would be a legal
+obligation.</p>
+<p>The game contains no third-party component that sends data anywhere
+other than the game's own server. Signing in with Google authenticates you
+to Google; it tells Google nothing about the game.</p>
 
-        <h2>Deleting your data</h2>
-        <p>
-            All data is local, so uninstalling the app, or clearing its storage from Android
-            Settings, removes everything. See the
-            <a href="delete.html">account and data deletion page</a> for details.
-        </p>
+<h2>5. Your rights</h2>
+<ul>
+<li><strong>See it.</strong> You can ask what is held on your account.</li>
+<li><strong>Delete it.</strong> <strong>Settings &rarr; Account &rarr; Delete
+ my account</strong>, inside the game, with no waiting: it destroys the
+ account on the server, takes the arena record and the raw gameplay rows
+ with it, and cannot be undone. See the
+ <a href="delete.html">account deletion page</a>.</li>
+<li><strong>Stop it.</strong> Statistics can be turned off in settings
+ without affecting your account.</li>
+<li><strong>Take it with you.</strong> You can ask for a copy of your
+ save.</li>
+</ul>
+<p>For seeing, stopping and porting, write to
+<a href="mailto:info@alitechit.com">info@alitechit.com</a>. Including your
+tag (<code>#XXXXXXXX</code>, under Settings &rarr; Account) makes the account
+easy to find. If you can no longer reach the game &mdash; the phone is gone,
+the app is uninstalled &mdash; a deletion request can be made by e-mail and
+is completed within 30 days.</p>
 
-        <h2>Changes to this policy</h2>
-        <p>
-            Online play and cloud saves are planned. If a future version starts sending data, this
-            page will be updated before that version ships, and the change will be described here
-            rather than added quietly.
-        </p>
+<h2>6. Children</h2>
+<p>TowerRift is not directed at children under 13 and does not knowingly
+collect data from them. If such an account comes to our attention it is
+deleted.</p>
 
-        <h2>Contact</h2>
-        <p>Questions about this policy: <a href="mailto:aekremsan@gmail.com">aekremsan@gmail.com</a></p>
+<h2>7. Changes</h2>
+<p>If this text changes, its date changes with it, and anything significant
+is also posted to the mailbox inside the game.</p>
+</div>
+<div data-lang="tr" hidden>
+<h1>Gizlilik Politikası</h1>
+<p class="sub">Yürürlük 28 Eylül 2026 &middot; Sorumlu: Ali Ekrem San
+(AliTechIT) &middot; <a href="mailto:info@alitechit.com">info@alitechit.com</a></p>
 
-        <footer>
-            AliTechIT · Ali Ekrem San · <a href="https://alitechit.com">alitechit.com</a>
-        </footer>
-    </div>
+<p>TowerRift <strong>oyunun nasıl oynandığını</strong> kaydeder,
+<strong>kim olduğunu</strong> değil. Topladığımız her şey oyunun dengesini
+ayarlamak ve hesabını telefonunu kaybedersen geri verebilmek içindir. Reklam
+ağı yok, veri satışı yok, üçüncü taraf takip yok.</p>
+
+<h2>1. Ne topluyoruz</h2>
+
+<h3>1.1 Hesap</h3>
+<table>
+<tr><th>Veri</th><th>Neden</th><th>Nereden</th></tr>
+<tr><td>Oyunun ürettiği hesap kimliği (UUID)</td><td>Hesabın kendisi</td>
+ <td>Cihazda üretilir</td></tr>
+<tr><td>Oyuncu adı ve etiket</td><td>Arkadaş listesi, sıralama</td>
+ <td>Sen yazarsın</td></tr>
+<tr><td>Google hesabı kimliği</td>
+ <td>Yeni telefonda hesabını geri vermek</td>
+ <td>Yalnızca Google'a bağla dersen</td></tr>
+<tr><td>Apple hesabı kimliği</td><td>Aynısı, iPhone'da</td>
+ <td>Yalnızca Apple ile Giriş Yap dersen</td></tr>
+<tr><td>İlerleme: bölüm, kupa, altın, kozmetik</td><td>Bulut kaydı</td>
+ <td>Oynarken</td></tr>
+</table>
+<p><strong>Apple ile giriş yaparken adın ve e-postan hiç istenmiyor.</strong>
+Oyun ikisini de kullanmıyor, ve kullanılmayacak bir izni istemek açıklanması
+gereken bir izindir.</p>
+<p><strong>Google ile bağlanırsan e-posta adresini ve profil fotoğrafını
+saklamıyoruz.</strong> Google'ın kimlik jetonu bunları taşıyor; sunucu
+bağlantıdan hemen sonra ikisini de siliyor. Bizde kalan tek şey, seni
+tanımaya yarayan kimlik numarası.</p>
+
+<h3>1.2 Oyun istatistikleri</h3>
+<p>Bir koşu bittiğinde şunlar kaydedilir:</p>
+<ul>
+<li>hangi mod ve hangi bölüm</li>
+<li>kaçıncı dalgada bitti, geçildi mi</li>
+<li>her dalgadan sonra çekirdekte kalan can</li>
+<li>kaç kule kuruldu, en yükseği kaçıncı seviye</li>
+<li>hesaptaki altın ve yeteneklere harcanmış altın</li>
+<li>kaç düşman sızdı</li>
+<li>oyunun sürümü</li>
+</ul>
+<p><strong>Gönderilmeyenler:</strong> adın, etiketin, mesajların, arkadaş
+listen, konumun, cihaz modelin, reklam kimliğin, IP'nin kaydı. Satırın
+içinde ayrıca bir kimlik göndermiyoruz &mdash; sunucu isteği zaten senin
+oturumundan tanıyor.</p>
+<p><strong>İlk açılışta soruluyor ve cevaplanana kadar hiçbir şey
+kaydedilmiyor.</strong> Hayır demek de bir cevaptır: soru bir daha sorulmaz.
+Kararını sonra <strong>Ayarlar &rarr; Veri &rarr; Oyun istatistikleri</strong>
+altından değiştirebilirsin. Kapattığında yeni kayıt oluşmaz ve telefonunda
+bekleyenler silinir.</p>
+
+<h3>1.3 Hiç toplamadıklarımız</h3>
+<p>Reklam kimliği, konum, rehber, fotoğraflar, mikrofon, cihaz modeli veya
+işletim sistemi sürümü, tarayıcı geçmişi ve ödeme bilgisi &mdash; satın alma
+Google Play ya da App Store üzerinden geçer, kart bilgisi bize hiç
+ulaşmaz.</p>
+
+<h2>2. Ne kadar saklıyoruz</h2>
+<table>
+<tr><th>Veri</th><th>Süre</th></tr>
+<tr><td>Hesap ve ilerleme</td><td>Hesap silinene kadar</td></tr>
+<tr><td>Oyun istatistikleri &mdash; sunucudaki ham satır</td>
+ <td><strong>60 gün</strong></td></tr>
+<tr><td>Oyun istatistikleri &mdash; günlük özet</td>
+ <td>Süresiz, kimliksiz: yalnızca gün, bölüm, sayılar</td></tr>
+<tr><td>Oyun istatistikleri &mdash; yerel arşiv</td>
+ <td>Süresiz, <strong>kimliksiz</strong></td></tr>
+</table>
+<p>Ham satır silindiğinde onu bir hesaba bağlayan tek bağ da silinir; geriye
+kalan özette kim olduğun yazmaz.</p>
+<p><strong>Yerel arşiv.</strong> Sunucudaki ham satırlar silinmeden önce
+geliştiricinin kendi makinesine kopyalanıyor, çünkü silinen bir satır bir
+daha sorulamayacak bir soru demek. <strong>Arşive hesap kimliği
+çıkmıyor</strong>: kopyalanan satırda kimin oynadığı yazmıyor, yalnızca
+koşunun kendisi. Bu yüzden arşivdeki bir satırı bir oyuncuya bağlamak mümkün
+değil, ve silme talebinde orada silinecek bir şey kalmıyor.</p>
+
+<h2>3. Nerede duruyor</h2>
+<p>Sunucu Oracle Cloud'da, Almanya/Frankfurt bölgesinde; Nakama ve
+PostgreSQL. Bağlantı HTTPS. Yönetim paneli internete kapalı, yalnızca SSH
+tüneliyle açılıyor.</p>
+
+<h2>4. Kimlerle paylaşıyoruz</h2>
+<p><strong>Hiç kimseyle.</strong> Reklam ağı, analitik SDK'sı, veri simsarı
+yok. Verini satmıyoruz. Tek istisna yasal bir zorunluluk doğması olurdu.</p>
+<p>Oyunun kendi sunucusu dışında veri gönderen hiçbir üçüncü taraf bileşeni
+yok. Google ile giriş, Google'ın kimlik doğrulaması içindir ve Google'a oyun
+hakkında bir şey söylemez.</p>
+
+<h2>5. Hakların</h2>
+<ul>
+<li><strong>Görmek:</strong> hesabında ne olduğunu sorabilirsin.</li>
+<li><strong>Silmek:</strong> <strong>Ayarlar &rarr; Hesap &rarr; Hesabımı
+ sil</strong>. Oyunun içinden, beklemeden: hesabı sunucuda yok eder, arena
+ kaydını ve ham oyun istatistiklerini de alır, ve geri dönüşü yoktur.
+ <a href="delete.html">Hesap silme sayfasına</a> bak.</li>
+<li><strong>Durdurmak:</strong> istatistikleri ayarlardan kapatabilirsin,
+ hesabın etkilenmez.</li>
+<li><strong>Taşımak:</strong> kaydının bir kopyasını isteyebilirsin.</li>
+</ul>
+<p>Görmek, durdurmak ve taşımak için:
+<a href="mailto:info@alitechit.com">info@alitechit.com</a>. Etiketini
+(<code>#XXXXXXXX</code>, Ayarlar &rarr; Hesap) yazarsan hesabını bulmak kolay
+olur. Oyuna artık ulaşamıyorsan &mdash; telefon gitti, uygulama silindi
+&mdash; silme talebi e-postayla da yapılabilir ve 30 gün içinde yerine
+getirilir.</p>
+
+<h2>6. Çocuklar</h2>
+<p>TowerRift 13 yaşın altındaki çocuklara yönelik değildir ve bilerek
+onlardan veri toplamaz. Böyle bir hesabın farkına varırsak sileriz.</p>
+
+<h2>7. Değişiklikler</h2>
+<p>Bu metin değişirse tarihi de değişir; önemli bir değişiklikse oyun içi
+posta kutusuna da bir not düşer.</p>
+</div>
+<p class="foot">TowerRift · AliTechIT ·
+ <a href="mailto:info@alitechit.com">info@alitechit.com</a></p>
+</main>
+<script>
+(function(){
+  var buttons = document.querySelectorAll('.switch button');
+  function show(code){
+    document.documentElement.lang = code;
+    document.querySelectorAll('[data-lang]').forEach(function(el){
+      el.hidden = el.getAttribute('data-lang') !== code;
+    });
+    buttons.forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.set === code));
+    });
+    try { localStorage.setItem('tr_lang', code); } catch (e) {}
+  }
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ show(b.dataset.set); });
+  });
+  // The link decides first, then what was chosen last time, then English.
+  var want = new URLSearchParams(location.search).get('lang');
+  if (want !== 'tr' && want !== 'en') {
+    try { want = localStorage.getItem('tr_lang'); } catch (e) { want = null; }
+  }
+  show(want === 'tr' ? 'tr' : 'en');
+})();
+</script>
 </body>
-
 </html>

@@ -1,118 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Account &amp; Data Deletion — TowerRift</title>
-    <meta name="description" content="How to delete your TowerRift account and game data." />
-    <style>
-        :root {
-            --bg: #080b14;
-            --panel: #111827;
-            --border: #24365c;
-            --text: #dbe4f5;
-            --muted: #94a3c4;
-            --accent: #59c7ff;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            margin: 0;
-            background: radial-gradient(120% 80% at 50% 0%, #17233d 0%, var(--bg) 55%, #05070d 100%);
-            color: var(--text);
-            font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.65;
-            min-height: 100vh;
-        }
-
-        .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 80px; }
-
-        .badge {
-            display: inline-flex; align-items: center; gap: 10px;
-            font-weight: 700; letter-spacing: .5px; color: var(--accent); margin-bottom: 8px;
-        }
-
-        .crystal {
-            width: 18px; height: 24px;
-            background: linear-gradient(180deg, #8fe3ff 0%, #2f9fe0 50%, #1b4f7a 100%);
-            clip-path: polygon(50% 0, 100% 35%, 50% 100%, 0 35%);
-            box-shadow: 0 0 16px rgba(89, 199, 255, .55);
-        }
-
-        h1 { font-size: 2rem; margin: .2em 0 .1em; }
-        h2 { font-size: 1.15rem; margin: 2em 0 .4em; color: var(--accent); }
-        .updated { color: var(--muted); font-size: .92rem; margin-bottom: 2em; }
-
-        .card {
-            background: var(--panel); border: 1px solid var(--border);
-            border-radius: 14px; padding: 18px 20px; margin: 18px 0;
-        }
-
-        .headline { border-color: #2f6f4f; background: #10221a; }
-        .headline strong { color: #6fe3a0; }
-
-        ol, ul { padding-left: 1.2em; }
-        li { margin: .4em 0; }
-        a { color: var(--accent); }
-
-        footer {
-            margin-top: 3em; padding-top: 1.4em; border-top: 1px solid var(--border);
-            color: var(--muted); font-size: .9rem;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TowerRift — Account deletion</title>
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#0d1017;--fg:#e8ecf4;--mut:#99a3b7;--acc:#e8c76a;--line:#232a39;
+ --chip:#161b26}
+@media(prefers-color-scheme:light){:root{--bg:#fbfbfd;--fg:#1a1d26;
+ --mut:#5a6070;--acc:#8a6d1f;--line:#e3e6ed;--chip:#f0f2f6}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+ font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+ padding:0 16px 80px}
+main{max-width:740px;margin:0 auto}
+header{max-width:740px;margin:0 auto;padding:22px 0 6px;display:flex;
+ align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-weight:700;letter-spacing:.3px}
+.brand span{color:var(--mut);font-weight:400}
+.switch{display:inline-flex;border:1px solid var(--line);border-radius:999px;
+ overflow:hidden;background:var(--chip)}
+.switch button{appearance:none;border:0;background:transparent;color:var(--mut);
+ font:600 13px/1 inherit;letter-spacing:.6px;padding:9px 16px;cursor:pointer}
+.switch button[aria-pressed="true"]{background:var(--acc);color:#15171d}
+h1{font-size:29px;line-height:1.25;margin:18px 0 4px}
+.sub{color:var(--mut);margin:0 0 18px}
+h2{font-size:20px;margin:32px 0 10px;padding-top:14px;
+ border-top:1px solid var(--line)}
+h3{font-size:16px;margin:20px 0 6px;color:var(--acc)}
+p{margin:10px 0}
+code{background:rgba(127,127,127,.16);padding:1px 5px;border-radius:4px;
+ font-size:14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;
+ vertical-align:top}
+th{background:rgba(127,127,127,.10);font-weight:600}
+ul{margin:10px 0;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--acc)}
+.foot{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);
+ color:var(--mut);font-size:14px;text-align:center}
+[hidden]{display:none}
+@media(max-width:560px){body{padding:0 14px 60px}h1{font-size:24px}
+ table,th,td{font-size:14px}}
+</style>
 </head>
-
 <body>
-    <div class="wrap">
-        <div class="badge"><span class="crystal"></span> ALITECHIT</div>
-        <h1>TowerRift — Account &amp; Data Deletion</h1>
-        <p class="updated">Last updated: 14 September 2026</p>
+<header>
+  <div class="brand">TowerRift <span>· AliTechIT</span></div>
+  <div class="switch" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="true">EN</button>
+    <button type="button" data-set="tr" aria-pressed="false">TR</button>
+  </div>
+</header>
+<main>
+<div data-lang="en">
+<h1>Account deletion</h1>
+<p class="sub">How to delete your TowerRift account, and what that removes.</p>
 
-        <div class="card headline">
-            <strong>In the current version there is no account to delete.</strong>
-            TowerRift does not yet have sign-in or a server, so everything the game knows about you
-            lives in a file on your own phone and deleting it is entirely in your hands.
-        </div>
+<h2>From inside the game</h2>
+<p>This is the fastest route and it takes effect immediately.</p>
+<ul>
+<li>Open TowerRift and tap <strong>Settings</strong>, the gear at the top
+right of the main menu.</li>
+<li>Choose <strong>Account</strong>, then <strong>Delete my account</strong>,
+and confirm.</li>
+</ul>
+<p>The account is destroyed on the server as soon as you confirm. It cannot
+be undone, and there is nothing to wait for.</p>
 
-        <div class="card">
-            <strong>Accounts are coming.</strong> Sign-in with Google Play Games and with Apple,
-            plus cloud saves, are planned, and an Apple App Store release follows the Google Play
-            one. When accounts exist you will be able to request deletion of the server-side copy
-            from this page, and the request address below already works for that.
-        </div>
+<h2>Without the game installed</h2>
+<p>If you have lost the phone or already removed the game, write to:</p>
+<p><strong><a href="mailto:info@alitechit.com?subject=Account%20deletion%20request">info@alitechit.com</a></strong></p>
+<p>Put <em>Account deletion request</em> in the subject line and include your
+<strong>player tag</strong> &mdash; the code beginning with <code>#</code>
+shown beside your name in the game, under Settings &rarr; Account. If you do
+not know it, give the e-mail address of the Google or Apple account you
+linked, and say roughly when you last played.</p>
+<p>Requests are completed within <strong>30 days</strong>, and you are told
+at that address when it is done.</p>
 
-        <h2>Delete everything</h2>
-        <p>Either of these removes all game data permanently:</p>
-        <ol>
-            <li><strong>Uninstall the app.</strong> Android deletes its private storage with it.</li>
-            <li><strong>Or clear its storage:</strong> Settings → Apps → TowerRift → Storage →
-                Clear data.</li>
-        </ol>
-        <p>
-            Both wipe your progress — chapters, talents, currency and settings. This cannot be
-            undone, and there is no backup anywhere to restore from.
-        </p>
+<h2>What is deleted</h2>
+<table>
+<tr><th>Data</th><th>What happens</th></tr>
+<tr><td>Account id, player name and tag</td><td>Deleted</td></tr>
+<tr><td>Progress: chapters, trophies, gold, gems, cosmetics</td><td>Deleted</td></tr>
+<tr><td>Cloud save</td><td>Deleted</td></tr>
+<tr><td>Arena record and leaderboard rows</td><td>Deleted</td></tr>
+<tr><td>Linked Google or Apple identifier</td><td>Deleted</td></tr>
+<tr><td>Raw gameplay statistics</td><td>Deleted</td></tr>
+<tr><td>Anonymous daily summaries</td>
+ <td><strong>Kept</strong> &mdash; they carry no identifier and cannot be
+ traced to anyone</td></tr>
+<tr><td>Reports other players have made about you</td>
+ <td><strong>Kept</strong>, detached from your identity</td></tr>
+<tr><td>Purchase records</td>
+ <td><strong>Kept</strong> by Google Play or the App Store, as tax and refund
+ law requires. They are not ours to delete.</td></tr>
+</table>
+<p>The last two rows have one reason between them. If a moderation report
+vanished along with the account it was about, deleting your own account
+would be a way to erase a complaint. And a purchase is the store's record,
+not ours.</p>
+<p>The rest is set out in the <a href="privacy.html">privacy policy</a>.</p>
+</div>
+<div data-lang="tr" hidden>
+<h1>Hesap silme</h1>
+<p class="sub">TowerRift hesabını nasıl silersin, ve bu neyi götürür.</p>
 
-        <h2>What about purchases?</h2>
-        <p>
-            Purchase records are held by Google Play, not by us. Deleting game data does not cancel
-            a subscription. Manage or cancel a monthly pass from the Google Play Store app under
-            Payments &amp; subscriptions.
-        </p>
+<h2>Oyunun içinden</h2>
+<p>En hızlı yol bu ve anında sonuç verir.</p>
+<ul>
+<li>TowerRift'i aç ve ana menünün sağ üstündeki dişliden
+<strong>Ayarlar</strong>'a gir.</li>
+<li><strong>Hesap</strong> &rarr; <strong>Hesabımı sil</strong> de ve
+onayla.</li>
+</ul>
+<p>Onayladığın anda hesap sunucuda yok edilir. Geri dönüşü yoktur ve
+beklenecek bir şey de yoktur.</p>
 
-        <h2>Requests</h2>
-        <p>
-            For anything this page does not cover, write to
-            <a href="mailto:aekremsan@gmail.com">aekremsan@gmail.com</a> with the subject
-            "TowerRift deletion request".
-        </p>
+<h2>Oyun kurulu değilken</h2>
+<p>Telefonunu kaybettiysen ya da oyunu sildiysen şu adrese yaz:</p>
+<p><strong><a href="mailto:info@alitechit.com?subject=Hesap%20silme%20talebi">info@alitechit.com</a></strong></p>
+<p>Konu satırına <em>Hesap silme talebi</em> yaz ve
+<strong>oyuncu etiketini</strong> ekle &mdash; oyunda adının yanında duran,
+<code>#</code> ile başlayan koddur; Ayarlar &rarr; Hesap altında da görünür.
+Bilmiyorsan hesabı bağladığın Google ya da Apple hesabının e-posta adresini
+yaz ve en son ne zaman oynadığını kabaca belirt.</p>
+<p>Talepler <strong>30 gün</strong> içinde sonuçlandırılır ve bittiğinde
+yazdığın adrese haber verilir.</p>
 
-        <footer>
-            AliTechIT · Ali Ekrem San · <a href="https://alitechit.com">alitechit.com</a>
-        </footer>
-    </div>
+<h2>Ne siliniyor</h2>
+<table>
+<tr><th>Veri</th><th>Ne oluyor</th></tr>
+<tr><td>Hesap kimliği, oyuncu adı ve etiket</td><td>Siliniyor</td></tr>
+<tr><td>İlerleme: bölüm, kupa, altın, elmas, kozmetikler</td><td>Siliniyor</td></tr>
+<tr><td>Bulut kaydı</td><td>Siliniyor</td></tr>
+<tr><td>Arena kaydı ve sıralama satırların</td><td>Siliniyor</td></tr>
+<tr><td>Bağlı Google veya Apple kimliği</td><td>Siliniyor</td></tr>
+<tr><td>Ham oyun istatistikleri</td><td>Siliniyor</td></tr>
+<tr><td>Kimliksiz günlük özetler</td>
+ <td><strong>Kalıyor</strong> &mdash; içlerinde kimlik yok, kimseye
+ bağlanamazlar</td></tr>
+<tr><td>Başka oyuncuların senin hakkında yaptığı ihbarlar</td>
+ <td><strong>Kalıyor</strong>, kimliğinden koparılmış hâlde</td></tr>
+<tr><td>Satın alma kayıtları</td>
+ <td><strong>Kalıyor</strong> &mdash; vergi ve iade mevzuatı gereği Google
+ Play ya da App Store tarafında tutuluyor. Silmek bizim elimizde değil.</td></tr>
+</table>
+<p>Son iki satırın ortak bir sebebi var. Bir ihbar, hakkında olduğu hesapla
+birlikte yok olsaydı, kendi hesabını silmek bir şikâyeti ortadan kaldırmanın
+yolu olurdu. Satın alma ise bizim değil, mağazanın kaydı.</p>
+<p>Gerisi <a href="privacy.html">gizlilik politikasında</a>.</p>
+</div>
+<p class="foot">TowerRift · AliTechIT ·
+ <a href="mailto:info@alitechit.com">info@alitechit.com</a></p>
+</main>
+<script>
+(function(){
+  var buttons = document.querySelectorAll('.switch button');
+  function show(code){
+    document.documentElement.lang = code;
+    document.querySelectorAll('[data-lang]').forEach(function(el){
+      el.hidden = el.getAttribute('data-lang') !== code;
+    });
+    buttons.forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.set === code));
+    });
+    try { localStorage.setItem('tr_lang', code); } catch (e) {}
+  }
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ show(b.dataset.set); });
+  });
+  // The link decides first, then what was chosen last time, then English.
+  var want = new URLSearchParams(location.search).get('lang');
+  if (want !== 'tr' && want !== 'en') {
+    try { want = localStorage.getItem('tr_lang'); } catch (e) { want = null; }
+  }
+  show(want === 'tr' ? 'tr' : 'en');
+})();
+</script>
 </body>
-
 </html>
